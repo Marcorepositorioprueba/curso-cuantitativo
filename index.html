@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma | Métodos Cuantitativos</title>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Dr. Marco Antonio Leon | Análisis Cuantitativo">
+    <meta property="og:description" content="Material del curso de Métodos Cuantitativos. Colegio Libre de Hidalgo.">
+    <meta property="og:image" content="https://<TU-USUARIO-DE-GITHUB>.github.io/<EL-NOMBRE-DE-TU-REPOSITORIO>/recursos/logo.png">
+    <meta property="og:url" content="https://<TU-USUARIO-DE-GITHUB>.github.io/<EL-NOMBRE-DE-TU-REPOSITORIO>/index.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: #fffaf8;
+            color: #2d2d2d;
+        }
+
+        /* Encabezado Superior */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2.5rem;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .top-header .logo img { max-height: 75px; }
+        .main-nav a { margin: 0 1.5rem; text-decoration: none; color: #555; font-weight: 600; transition: color 0.3s; }
+        .main-nav a:hover { color: #ff5d5d; }
+        .header-cta { display: flex; align-items: center; }
+        .header-cta .cta-button { background-color: #ff5d5d; color: #fff; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s; }
+        .header-cta .cta-button:hover { background-color: #e04a4a; }
+
+        .live-button {
+            display: flex;
+            align-items: center;
+            background-color: #28a745; /* Green for 'live' */
+            color: white !important;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-right: 15px;
+        }
+        .live-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+            color: white !important;
+        }
+        .live-button i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        .live-button-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            line-height: 1.2;
+        }
+        .live-button-text span {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .live-button-text small {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        /* Sección Hero */
+        .hero { padding: 4rem 2.5rem; text-align: left; background-color: #f8f9fa; border-bottom: 1px solid #e9ecef; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.2; margin: 0 0 1rem 0; }
+        .hero p { font-size: 1.2rem; color: #555; max-width: 600px; }
+
+        /* Área de Contenido y Tarjetas */
+        .content-area { padding: 2rem 2.5rem 4rem 2.5rem; }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .card h2 {
+            font-size: 2rem; font-weight: 700; margin-top: 0; margin-bottom: 2rem;
+            border-bottom: 2px solid #ff5d5d; padding-bottom: 0.8rem; display: flex; align-items: center;
+        }
+        .card h2 .fa { margin-right: 1rem; color: #ff5d5d; }
+
+        /* Contenedor de Video */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 8px;
+        }
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Estilos de contenido */
+        .table-wrapper { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+        th, td { border: 1px solid #eee; padding: 1rem; text-align: left; }
+        th { background-color: #f9f9f9; font-weight: 600; }
+        ol, ul { padding-left: 20px; }
+        li { margin-bottom: 1rem; }
+        footer { text-align: center; padding: 3rem 0; background-color: #2d2d2d; color: #fff; }
+
+        /* --- Media Queries para Diseño Responsivo --- */
+        @media (max-width: 1024px) {
+            .main-nav { display: none; } /* Ocultar nav en tablet para más espacio */
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+            .content-area { padding: 2rem 1.5rem 3rem 1.5rem; }
+            .card { padding: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .top-header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem;
+            }
+            .top-header .logo {
+                margin-bottom: 1rem;
+            }
+            .header-cta {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+            .live-button, .header-cta .cta-button {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .hero { padding: 2rem 1rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+
+            .content-area { padding: 1.5rem 1rem 2rem 1rem; }
+            .card { padding: 1.5rem; }
+            .card h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="logo">
+            <a href="#"><img src="recursos/logo.png" alt="Logo del Curso"></a>
+        </div>
+        <nav class="main-nav">
+            <a href="#programa">Programa</a>
+            <a href="#evaluacion">Evaluación</a>
+            <a href="#lecturas">Lecturas</a>
+            <a href="#recursos-interes">Recursos</a>
+        </nav>
+        <div class="header-cta">
+            <a href="https://meet.google.com/gjk-mvzm-tkj" target="_blank" class="live-button">
+                <i class="fas fa-video"></i>
+                <div class="live-button-text">
+                    <span>Unirse a transmisión en vivo</span>
+                    <small>viernes 19/09/2025, 17:00 hrs.</small>
+                </div>
+            </a>
+            <a href="clase1.html" class="cta-button">ENTRAR A CLASE 1</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Métodos Cuantitativos Aplicados a la Administración Pública</h1>
+        <p>Dr. Marco Antonio Leon Zaragoza</p>
+    </section>
+
+    <div class="content-area" style="padding-top:0; padding-bottom:0;">
+        <div class="card">
+            <h2><i class="fa fa-video"></i> Video de Bienvenida</h2>
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="recursos/ihtroclh.mp4" type="video/mp4">
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <main class="content-area">
+        <div id="programa" class="card">
+            <h2><i class="fa fa-book-open"></i> Programa del Curso</h2>
+            <p><strong>Objetivo general:</strong> Al finalizar el curso el alumno habrá obtenido un entrenamiento especializado en el uso de metodologías, técnicas, herramientas e instrumentos cuantitativos para recopilar, organizar, presentar, analizar e interpretar datos numéricos...</p>
+            <h4>Temario Principal:</h4>
+            <ol>
+                <li><strong>ESTADÍSTICA INFERENCIAL: PROBABILIDAD:</strong> Incluye conceptos de probabilidad, distribuciones discretas (binomial, Poisson), y distribución normal.</li>
+                <li><strong>ESTADÍSTICA INFERENCIAL: MUESTREO:</strong> Incluye métodos de muestreo, estimaciones, pruebas de hipótesis y prueba t de student.</li>
+                <li><strong>ANÁLISIS ECONOMÉTRICO:</strong> Incluye correlación, regresión simple y múltiple, y otras herramientas econométricas.</li>
+                <li><strong>INTEGRACIÓN DE TÉCNICAS ESTADÍSTICAS:</strong> Aplicación práctica en una problemática de la gestión pública.</li>
+            </ol>
+        </div>
+
+        <div id="evaluacion" class="card">
+            <h2><i class="fa fa-clipboard-check"></i> Criterios de Evaluación</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Criterio</th><th>Ponderación</th></tr></thead>
+                    <tbody>
+                        <tr><td>Primer examen parcial</td><td>20%</td></tr>
+                        <tr><td>Segundo examen parcial</td><td>20%</td></tr>
+                        <tr><td>Examen global</td><td>50%</td></tr>
+                        <tr><td>Reportes de investigación</td><td>10%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 1rem; font-style: italic; text-align: center;"><strong>Nota:</strong> La calificación mínima aprobatoria será de 8.0.</p>
+        </div>
+
+        <div id="actividades" class="card">
+            <h2><i class="fa fa-pencil-alt"></i> Actividades de Aprendizaje</h2>
+            <p><strong>Bajo la conducción de un docente:</strong></p>
+            <ul>
+                <li>Análisis de fenómenos y resolución de problemas tipo a través de discusiones guiadas, estudios de caso y ejercicios prácticos en clase.</li>
+                <li>Sesiones interactivas para la aplicación de software estadístico (ej. Excel) en la resolución de problemas reales.</li>
+            </ul>
+            <p><strong>Actividades Independientes:</strong></p>
+            <ul>
+                <li>Resolución de ejercicios y cuestionarios para reforzar la comprensión teórica y práctica.</li>
+                <li>Diseño de mapas mentales y conceptuales para organizar y sintetizar la información clave.</li>
+                <li>Investigación y lectura de materiales complementarios para profundizar en temas específicos.</li>
+            </ul>
+        </div>
+
+        <div id="lecturas" class="card">
+            <h2><i class="fa fa-file-pdf"></i> Lecturas</h2>
+            <p>Aún no se han añadido lecturas. Esta sección contendrá los enlaces a los documentos PDF del curso.</p>
+        </div>
+
+        <div id="recursos-interes" class="card">
+            <h2><i class="fa fa-search"></i> Recursos y Enlaces de Interés</h2>
+            <ul>
+                <li><a href="https://www.google.com/search?q=Introducci%C3%B3n+a+la+estad%C3%ADstica+y+su+aplicaci%C3%B3n+en+la+gesti%C3%B3n+p%C3%BAblica" target="_blank">Recurso 1: Búsqueda sobre Estadística en la Gestión Pública</a></li>
+                <li><a href="https://www.google.com/search?tbm=bks&q=estad%C3%ADstica+para+administraci%C3%B3n+p%C3%BAblica" target="_blank">Recurso 2: Libros de Estadística para Administración</a></li>
+                <li><a href="Estadistica para Administracion y Negocios.pdf" download><i class="fa fa-file-pdf"></i> Descargar: Estadistica para Administracion y Negocios.pdf</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>Dr. Marco Antonio Leon Zaragoza|Otoño 2025</p>
+    </footer>
+
+</body>
+</html>

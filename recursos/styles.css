@@ -1,0 +1,223 @@
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #1a1a2e; /* Fondo principal oscuro */
+    color: #e0e0e0; /* Texto principal claro */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Encabezado Superior --- */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background-color: #16213e; /* Un poco más claro que el fondo */
+    border-bottom: 1px solid #303956;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.top-header .logo img { 
+    max-height: 40px; 
+    filter: invert(1) grayscale(1) brightness(2); /* Ajuste para logo en tema oscuro */
+}
+.main-nav a { 
+    margin: 0 1.5rem; 
+    text-decoration: none; 
+    color: #c0c0c0; 
+    font-weight: 600; 
+    transition: color 0.3s, transform 0.3s;
+    display: inline-block;
+}
+.main-nav a:hover { 
+    color: #ff5d5d;
+    transform: translateY(-2px);
+}
+.header-cta .cta-button { 
+    background-color: #ff5d5d; 
+    color: #fff; 
+    padding: 0.8rem 1.5rem; 
+    border-radius: 5px; 
+    text-decoration: none; 
+    font-weight: 600; 
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.header-cta .cta-button:hover { 
+    background-color: #e04a4a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 93, 93, 0.3);
+}
+
+/* --- Sección Hero --- */
+.hero { 
+    padding: 5rem 2.5rem; 
+    text-align: center; 
+    background: linear-gradient(180deg, #16213e 0%, #1a1a2e 100%);
+}
+.hero h1 { 
+    font-size: 3.8rem; 
+    font-weight: 700; 
+    line-height: 1.2; 
+    margin: 0 0 1rem 0; 
+    color: #ffffff;
+}
+.hero p { 
+    font-size: 1.3rem; 
+    color: #a0a0a0; 
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Área de Contenido y Tarjetas Generales --- */
+.content-area { 
+    padding: 3rem 2.5rem; 
+}
+.card {
+    background-color: #16213e;
+    border: 1px solid #303956;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+.card h2 {
+    font-size: 2.2rem; 
+    font-weight: 700; 
+    margin-top: 0; 
+    margin-bottom: 2rem;
+    border-bottom: 3px solid #ff5d5d; 
+    padding-bottom: 1rem; 
+    display: flex; 
+    align-items: center;
+    color: #ffffff;
+}
+.card h2 .fa, .card h2 .fas { 
+    margin-right: 1.2rem; 
+    color: #ff5d5d; 
+}
+
+/* --- Sección de Clases --- */
+.clases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.clase-card {
+    background: #1f2a4d;
+    border: 1px solid #303956;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.clase-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 168, 255, 0.2);
+    border-color: #00a8ff;
+}
+
+.clase-card-icon .fas {
+    font-size: 3rem;
+    color: #00a8ff;
+    margin-bottom: 1.5rem;
+}
+
+.clase-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+}
+
+.clase-card p {
+    color: #c0c0c0;
+    font-size: 1rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.clase-card .btn {
+    display: inline-block;
+    background-color: #00a8ff;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.clase-card .btn:hover {
+    background-color: #008ecc;
+    transform: scale(1.05);
+}
+
+
+/* --- Contenedor de Video --- */
+.video-wrapper {
+    max-width: 80%;
+    margin: 1rem auto 0 auto;
+}
+.video-wrapper video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid #303956;
+}
+
+/* --- Estilos de contenido adaptados --- */
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 1.5rem; 
+}
+th, td { 
+    border: 1px solid #303956; 
+    padding: 1rem; 
+    text-align: left; 
+}
+th { 
+    background-color: #1f2a4d; 
+    font-weight: 600; 
+    color: #ffffff;
+}
+ol, ul { 
+    padding-left: 20px; 
+    line-height: 1.8;
+}
+li { 
+    margin-bottom: 1rem; 
+}
+a {
+    color: #00a8ff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    color: #ff5d5d;
+}
+
+/* --- Footer --- */
+footer { 
+    text-align: center; 
+    padding: 3rem 0; 
+    background-color: #0f0f1a; 
+    color: #a0a0a0;
+    margin-top: 2rem;
+}

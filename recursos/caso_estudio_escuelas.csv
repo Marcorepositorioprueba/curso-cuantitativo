@@ -1,0 +1,16 @@
+ID_Escuela,Nombre_Escuela,Zona,Numero_Alumnos,Presupuesto_Anual,Calificacion_Promedio_Matematicas,Años_Antiguedad_Director
+1,Escuela Benito Juarez,Urbana,450,120000,8.5,12
+2,Escuela Miguel Hidalgo,Urbana,620,180000,8.1,5
+3,Escuela Josefa Ortiz,Rural,120,50000,7.2,8
+4,Escuela Morelos,Urbana,510,140000,N/A,3
+5,Escuela Vicente Guerrero,Rural,95,45000,7.5,15
+6,Escuela Ignacio Allende,Suburbana,320,90000,8,7
+7,Escuela Belisario Dominguez,Urbana,710,210000,7.9,2
+8,Escuela Francisco Villa,Rural,80,,6.8,10
+9,Escuela Lazaro Cardenas,Suburbana,280,85000,8.2,4
+10,Escuela Emiliano Zapata,Rural,110,52000,7.1,9
+11,Escuela Ricardo Flores Magon,Urbana,550,160000,8.8,11
+12,Escuela Justo Sierra,Suburbana,350,95000,7.7,
+13,Escuela Niños Heroes,Urbana,680,195000,8.3,6
+14,Escuela Leona Vicario,Rural,130,55000,N/A,14
+15,Escuela Sor Juana Ines,Suburbana,410,110000,8.1,8

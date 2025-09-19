@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 1 | Métodos Cuantitativos</title>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Dr. Marco Antonio Leon | Análisis Cuantitativo">
+    <meta property="og:description" content="Material del curso de Métodos Cuantitativos. Colegio Libre de Hidalgo.">
+    <meta property="og:image" content="https://<TU-USUARIO-DE-GITHUB>.github.io/<EL-NOMBRE-DE-TU-REPOSITORIO>/recursos/logo.png">
+    <meta property="og:url" content="https://<TU-USUARIO-DE-GITHUB>.github.io/<EL-NOMBRE-DE-TU-REPOSITORIO>/clase1.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: #fffaf8;
+            color: #2d2d2d;
+        }
+
+        /* Encabezado Superior */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2.5rem;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .top-header .logo img { max-height: 75px; }
+        .main-nav a { margin: 0 1.5rem; text-decoration: none; color: #555; font-weight: 600; transition: color 0.3s; }
+        .main-nav a:hover { color: #ff5d5d; }
+        .header-cta { display: flex; align-items: center; }
+        .header-cta .cta-button { background-color: #ff5d5d; color: #fff; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s; }
+        .header-cta .cta-button:hover { background-color: #e04a4a; }
+        .header-cta .secondary-button { background-color: #555; margin-right: 1rem;}
+        .header-cta .secondary-button:hover { background-color: #333; }
+
+        .live-button {
+            display: flex;
+            align-items: center;
+            background-color: #28a745; /* Green for 'live' */
+            color: white !important;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-right: 15px;
+        }
+        .live-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+            color: white !important;
+        }
+        .live-button i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        .live-button-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            line-height: 1.2;
+        }
+        .live-button-text span {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .live-button-text small {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        /* Sección Hero */
+        .hero { padding: 4rem 2.5rem; text-align: left; background-color: #f8f9fa; border-bottom: 1px solid #e9ecef; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.2; margin: 0 0 1rem 0; }
+        .hero p { font-size: 1.2rem; color: #555; max-width: 800px; }
+
+        /* Área de Contenido y Tarjetas */
+        .content-area { padding: 2rem 2.5rem 4rem 2.5rem; }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .card h2 {
+            font-size: 2rem; font-weight: 700; margin-top: 0; margin-bottom: 0;
+            padding-bottom: 0; display: flex; align-items: center; flex-grow: 1;
+        }
+        .card h2 .fa, .card h2 .fas { margin-right: 1rem; color: #ff5d5d; }
+        .card h3 { font-size: 1.6rem; font-weight: 600; color: #333; margin-top: 2.5rem; }
+        .card p { line-height: 1.8; }
+        .card .example {
+            background-color: #f9f9f9;
+            border-left: 5px solid #ff5d5d;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .card .example strong { color: #2d2d2d; }
+        
+        .card .content-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 2rem auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .table-wrapper { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+        th, td { border: 1px solid #eee; padding: 1rem; text-align: left; }
+        th { background-color: #f9f9f9; font-weight: 600; }
+        code {
+            background-color: #eee;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Estilos para Secciones Desplegables */
+        .card summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            list-style: none; /* Quita el marcador por defecto */
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #ff5d5d;
+        }
+        .card summary::-webkit-details-marker { display: none; }
+
+        .card summary:after {
+            content: '\f078'; /* Icono de flecha hacia abajo de Font Awesome */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            transition: transform 0.3s ease-in-out;
+            color: #ff5d5d;
+            font-size: 1.5rem;
+        }
+
+        .card details[open] > summary:after {
+            transform: rotate(180deg);
+        }
+
+        .card-content {
+            padding-top: 1.5rem;
+        }
+
+        footer { text-align: center; padding: 3rem 0; background-color: #2d2d2d; color: #fff; }
+
+        /* --- Media Queries para Diseño Responsivo --- */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+            .content-area { padding: 2rem 1.5rem 3rem 1.5rem; }
+            .card { padding: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .top-header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem;
+            }
+            .top-header .logo {
+                margin-bottom: 1rem;
+            }
+            .header-cta {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+            .live-button, .header-cta .cta-button {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .hero { padding: 2rem 1rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+
+            .content-area { padding: 1.5rem 1rem 2rem 1rem; }
+            .card { padding: 1.5rem; }
+            .card h2 { font-size: 1.5rem; }
+            .card h3 { font-size: 1.3rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="logo">
+            <a href="index.html"><img src="recursos/logo.png" alt="Logo del Curso"></a>
+        </div>
+        <div class="header-cta">
+            <a href="https://meet.google.com/gjk-mvzm-tkj" target="_blank" class="live-button">
+                <i class="fas fa-video"></i>
+                <div class="live-button-text">
+                    <span>Unirse a transmisión en vivo</span>
+                    <small>viernes 19/09/2025, 17:00 hrs.</small>
+                </div>
+            </a>
+            <a href="index.html" class="cta-button secondary-button">Volver al Inicio</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Clase 1: Introducción y Estadística Descriptiva</h1>
+        <p>La base de la toma de decisiones con datos: Cómo obtener una radiografía precisa de la realidad para informar la política pública.</p>
+    </section>
+
+    <main class="content-area">
+        <!-- SECCIÓN DE PRESENTACIÓN -->
+        <div class="card" id="presentacion">
+            <details>
+                <summary><h2><i class="fas fa-file-powerpoint"></i> Presentación de la Clase</h2></summary>
+                <div class="card-content">
+                    <p>Descarga la presentación de PowerPoint que acompaña a esta clase. Contiene los puntos clave y visualizaciones de los conceptos que se tratarán a continuación.</p>
+                    <div class="example" style="text-align: center;">
+                        <a href="recursos/Clase 1.pptx" class="cta-button" download="Clase1_Introduccion.pptx"><i class="fas fa-file-powerpoint"></i> Descargar Presentación (.pptx)</a>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- SECCIÓN DE INTRODUCCIÓN -->
+        <div class="card">
+            <details open>
+                <summary><h2><i class="fas fa-lightbulb"></i> 1. Introducción: De la Anécdota a la Evidencia</h2></summary>
+                <div class="card-content">
+                    <p>En la administración pública, las decisiones impactan la vida de miles o millones de personas. Históricamente, muchas de estas decisiones se basaban en la intuición, la tradición o la presión política (la "anécdota"). Sin embargo, este enfoque puede ser ineficiente y, a menudo, injusto.</p>
+                    <p>Los métodos cuantitativos nos ofrecen una alternativa poderosa: la <strong>gestión basada en evidencia</strong>. Se trata de usar datos sistemáticamente para entender la magnitud de un problema, identificar sus causas y medir el impacto real de las soluciones que implementamos. El objetivo no es eliminar el juicio humano, sino potenciarlo con información objetiva.</p>
+                    <div class="example">
+                        <strong>Ejemplos de decisiones basadas en "anécdota" o política vs. evidencia técnica:</strong>
+                        <ul>
+                            <li style="margin-bottom: 1.5rem;">
+                                <strong>La cancelación del Nuevo Aeropuerto de la Ciudad de México (NAIM):</strong> En 2018, con un avance de obra del 32%, el proyecto fue cancelado tras una consulta ciudadana no oficial organizada por el equipo de transición presidencial. La decisión se justificó en la lucha contra la corrupción y el alto costo, pero desestimó los estudios técnicos y financieros que lo respaldaban, así como el costo hundido de la cancelación, que la Auditoría Superior de la Federación estimó en más de 113 mil millones de pesos.
+                                <br><small><em>Fuente: Animal Político, "El costo final por la cancelación del NAIM fue de 113 mil mdp, 13% menos de lo que estimó la ASF", 2021.</em></small>
+                            </li>
+                            <li>
+                                <strong>Cambios de ruta en el Tren Maya:</strong> Otro megaproyecto donde los trazados, particularmente el Tramo 5 (Cancún-Tulum), se modificaron sobre la marcha. Organizaciones ambientalistas y expertos señalaron que estos cambios se realizaron sin los estudios de impacto ambiental y geológico adecuados que exige la ley, priorizando la rapidez política sobre la evidencia técnica y causando afectaciones a cenotes y cuevas.
+                                <br><small><em>Fuente: Expansión, "El Tramo 5 del Tren Maya, el más polémico, se construye sobre la marcha", 2022.</em></small>
+                            </li>
+                        </ul>
+                        <p style="margin-top: 1rem;">Estos casos ilustran cómo decisiones de alto impacto, con miles de millones de dólares en juego, pueden ser influenciadas por factores políticos por encima de los análisis cuantitativos de costo-beneficio, impacto ambiental o viabilidad técnica.</p>
+
+                        <hr style="margin: 2rem 0; border-top: 1px solid #ddd; border-bottom: 0;">
+
+                        <strong>Un ejemplo de lo contrario (decisión basada en evidencia):</strong>
+                        <ul>
+                            <li>
+                                <strong>La Tarifa de Congestión de Londres:</strong> A principios de los 2000, para combatir el tráfico de la ciudad, se propuso cobrar una tarifa a los vehículos que entraran al centro. La medida era impopular y enfrentó una fuerte oposición. Sin embargo, la decisión se basó en extensos modelos de transporte y estudios económicos que predecían con precisión una reducción del tráfico de entre 10-15%. Al implementarse en 2003, los resultados confirmaron las predicciones: el tráfico bajó, los tiempos de viaje mejoraron y se generaron ingresos para el transporte público. Fue un caso de éxito donde la evidencia técnica prevaleció sobre la opinión popular inicial.
+                                <br><small><em>Fuente: Transport for London (TfL), "Impacts Monitoring Reports", 2003-2007.</em></small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- NUEVA SECCIÓN: CÓMO USAR LA ESTADÍSTICA PARA CONFUNDIR -->
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-user-secret"></i> 2. Cómo Usar la Estadística para Confundir: El Peligro de Omitir Dimensiones</h2></summary>
+                <div class="card-content">
+                    <p>Una de las formas más sutiles de manipular la opinión con datos no es mentir, sino <strong>decir solo una parte de la verdad</strong>. Esto es especialmente fácil cuando se analizan problemas complejos y multidimensionales, como la pobreza.</p>
+                    
+                    <div class="example">
+                        <strong>Caso de Estudio: La Medición Multidimensional de la Pobreza en México (2018-2022)</strong>
+                        <p>En México, el CONEVAL mide la pobreza de forma multidimensional, considerando tanto el <strong>ingreso</strong> como el acceso a <strong>derechos sociales</strong> (salud, educación, etc.).</p>
+                        <p>Durante la administración 2018-2024, los programas de transferencias monetarias directas y el aumento del salario mínimo ayudaron a mejorar el ingreso de muchas familias. Esto permitió comunicar una narrativa de éxito:</p>
+                        <ul>
+                            <li><strong>La Verdad Parcial (El "Spin"):</strong> Entre 2018 y 2022, el porcentaje de población con un ingreso inferior a la línea de pobreza disminuyó del 49.9% al 43.5%. Si un gobierno solo reporta esta cifra, la conclusión es que sus políticas para reducir la pobreza fueron un éxito rotundo.</li>
+                        </ul>
+                        <p>Sin embargo, en el mismo periodo, hubo cambios estructurales en el sistema de salud. Al observar la dimensión de los derechos sociales, el panorama se vuelve más complejo:</p>
+                        <ul>
+                            <li><strong>La Verdad Completa (El Contexto):</strong> El mismo informe del CONEVAL reveló que, entre 2018 y 2022, el número de personas con <strong>carencia de acceso a servicios de salud</strong> se disparó, pasando de 20.1 millones a <strong>50.4 millones de personas</strong> (un aumento del 16.2% al 39.1% de la población).</li>
+                        </ul>
+                        <h4 style="text-align: center; margin-top: 2rem;">Conclusión: ¿Realmente Mejoró el Bienestar?</h4>
+                        <p>La estadística no miente: el ingreso monetario mejoró. Pero al enfocarse solo en esa métrica y omitir el grave deterioro en el acceso a la salud, se presenta una imagen incompleta y potencialmente engañosa del bienestar real. La lección como analistas es que siempre debemos preguntar: <strong>"¿Qué dimensión del problema no estoy viendo?"</strong> y buscar el panorama completo.</p>
+                        <small><em>Fuente: CONEVAL, "Resultados de la Medición Multidimensional de la Pobreza en México 2022".</em></small>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- NUEVA SECCIÓN: CAMBIO DE DEFINICIONES -->
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-ruler-horizontal"></i> 3. Otro Peligro: Cambiar la Métrica a Mitad del Juego</h2></summary>
+                <div class="card-content">
+                    <p>Otra táctica para generar narrativas de éxito es modificar sutilmente la definición de lo que se está midiendo. Si no se puede mejorar el resultado de la métrica "A", se empieza a reportar la métrica "B" (que es parecida, pero más favorable) como si fuera la original.</p>
+                    
+                    <div class="example">
+                        <strong>Caso de Estudio: La Medición de la Producción Petrolera de PEMEX</strong>
+                        <p>Históricamente, la cifra clave para medir la salud de PEMEX ha sido la <strong>producción de petróleo crudo</strong>. Sin embargo, para alcanzar las metas de producción autoimpuestas, en años recientes se ha popularizado una nueva narrativa.</p>
+                        <ul>
+                            <li><strong>La Métrica Modificada (El "Spin"):</strong> El gobierno reporta una producción de "hidrocarburos líquidos" que se acerca a los 2 millones de barriles diarios. Esta cifra se presenta como el indicador principal del éxito y la recuperación de la empresa.</li>
+                            <li><strong>El Cambio de Definición (El Contexto):</strong> La cifra de "hidrocarburos líquidos" suma la producción de petróleo crudo + la de <strong>condensados</strong>. Los condensados son un tipo de hidrocarburo más ligero y de menor valor comercial. Al incluirlos, la cifra total se infla artificialmente.</li>
+                        </ul>
+                        <h4 style="text-align: center; margin-top: 2rem;">Conclusión: ¿Realmente se Produce Más Petróleo?</h4>
+                        <p>Si se analiza únicamente la producción de <strong>petróleo crudo</strong> (la métrica tradicional), se observa que esta se ha mantenido estancada o incluso ha declinado. Al cambiar la definición y no aclararlo de forma transparente, se puede dar la impresión de un éxito que no se refleja en la métrica más importante y de mayor valor económico. La lección es: siempre asegúrate de que estás comparando <strong>manzanas con manzanas</strong> a lo largo del tiempo.</p>
+                        <small><em>Fuente: Análisis de reportes de producción de PEMEX por parte de medios especializados como Reuters, Bloomberg o S&P Global.</em></small>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- NUEVA SECCIÓN: TIPOS DE VARIABLES -->
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-tags"></i> 4. Tipos de Variables: La Gramática de los Datos</h2></summary>
+                <div class="card-content">
+                    <p>Antes de cualquier análisis, es crucial entender la naturaleza de nuestros datos. Las variables se dividen en dos grandes familias, y saber distinguirlas determina qué podemos hacer con ellas.</p>
+                    <h3>Variables Cualitativas (o Categóricas)</h3>
+                    <p>Describen una cualidad o característica. Se dividen en:</p>
+                    <ul>
+                        <li><strong>Nominales:</strong> No tienen un orden o jerarquía. Ej: Dependencia (`Obras Públicas`, `Salud`), Género (`Masculino`, `Femenino`), Tipo de Trámite.</li>
+                        <li><strong>Ordinales:</strong> Sí tienen un orden o jerarquía, pero la distancia entre sus categorías no es uniforme. Ej: Nivel de satisfacción (`Malo`, `Regular`, `Bueno`), Nivel educativo (`Primaria`, `Secundaria`, `Universidad`).</li>
+                    </ul>
+                    <h3>Variables Cuantitativas (o Numéricas)</h3>
+                    <p>Miden una cantidad y son la base del análisis estadístico. Se subdividen en dos tipos cruciales según la naturaleza de su punto cero.</p>
+                    
+                    <h4>Variables de Intervalo</h4>
+                    <p>En estas variables, la diferencia entre dos valores es constante, pero <strong>el cero es arbitrario</strong> y no representa la ausencia total del atributo.</p>
+                    <ul>
+                        <li><strong>Temperatura (en Celsius o Fahrenheit):</strong> 0°C no significa "ausencia de calor", es solo un punto en la escala. No puedes decir que 20°C es "el doble de caliente" que 10°C.</li>
+                        <li><strong>Años del calendario:</strong> El "año 0" es una convención, no el "inicio del tiempo".</li>
+                        <li><strong>Puntajes en pruebas de IQ:</strong> Un puntaje de 0 no significa "cero inteligencia".</li>
+                    </ul>
+
+                    <h4>Variables de Razón</h4>
+                    <p>Poseen todas las propiedades de las de intervalo, pero su <strong>cero es absoluto y real</strong>, indicando la ausencia total del valor. Esto permite usar proporciones y razones (el doble, la mitad).</p>
+                    <ul>
+                        <li><strong>Edad:</strong> 0 años significa ausencia de tiempo vivido. Alguien de 40 años tiene el doble de edad que alguien de 20.</li>
+                        <li><strong>Altura o Peso:</strong> 0 cm o 0 kg representa la ausencia total de la medida.</li>
+                        <li><strong>Ingresos o Presupuesto:</strong> Un ingreso de $0 significa que no se recibió dinero.</li>
+                        <li><strong>Número de empleados, días de respuesta, etc.:</strong> Un valor de 0 significa la ausencia de ese conteo.</li>
+                    </ul>
+
+                    <div class="example">
+                        <strong>La clave para diferenciarlas:</strong> Pregúntate, ¿el valor "0" significa la ausencia total de lo que estoy midiendo? Si la respuesta es <strong>sí</strong>, es de <strong>Razón</strong>. Si es <strong>no</strong>, es de <strong>Intervalo</strong>.
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- SECCIÓN DE MEDIDAS DE TENDENCIA CENTRAL -->
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-chart-pie"></i> 5. Medidas de Tendencia Central</h2></summary>
+                <div class="card-content">
+                    <p>Estas herramientas nos dicen cuál es el valor "típico" o central de un conjunto de datos. Las tres más importantes son la media, la mediana y la moda.</p>
+                    <img src="https://placehold.co/600x300/e8d5c4/2d2d2d?text=Media+vs+Mediana" alt="Diagrama de Media vs Mediana" class="content-image">
+                    <div class="example">
+                        <strong>Ejemplo Práctico: Salarios en una Dependencia Pública</strong>
+                        <p>Imaginemos los salarios de 7 empleados: <code>$800, $900, $1,000, $1,100, $1,200, $2,000, $10,000</code>.</p>
+                        <ul>
+                            <li><strong>Media:</strong> $2,428. Es engañosa por el valor extremo de $10,000.</li>
+                            <li><strong>Mediana:</strong> $1,100. Representa mucho mejor el salario "típico".</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- PRÁCTICAS 1 Y 2 -->
+        <div class="card" id="practica">
+            <h2><i class="fas fa-file-excel"></i> Práctica 1: Análisis de Salarios en Excel</h2>
+            <p>Aplica lo aprendido sobre tendencia central con un conjunto de datos real.</p>
+            <div class="example" style="text-align: center;">
+                <a href="recursos/practica_salarial_gob.csv" class="cta-button" download="practica_salarial_gob.csv"><i class="fas fa-file-excel"></i> Descargar Archivo de Práctica (.csv)</a>
+            </div>
+        </div>
+        <div class="card" id="practica2">
+            <h2><i class="fas fa-broom"></i> Práctica 2: Limpieza y Arreglo de Datos</h2>
+            <p>La tarea más común de un analista. Aprende a identificar y corregir errores en un set de datos real.</p>
+            <div class="example" style="text-align: center;">
+                <a href="recursos/reporte_ciudadano_sucio.csv" class="cta-button" download="reporte_ciudadano_sucio.csv"><i class="fas fa-file-excel"></i> Descargar Reporte Ciudadano (.csv)</a>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE MEDIDAS DE DISPERSIÓN -->
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-chart-bar"></i> 6. Medidas de Dispersión</h2></summary>
+                <div class="card-content">
+                    <p>No basta con conocer el centro, necesitamos saber qué tan "esparcidos" están los datos. Esto nos habla de consistencia y variabilidad.</p>
+                    <img src="https://placehold.co/600x300/e8d5c4/2d2d2d?text=Baja+Dispersion+vs+Alta+Dispersion" alt="Diagrama de Dispersión" class="content-image">
+                    <div class="example">
+                        <strong>Ejemplo Práctico: Tiempos de Espera</strong>
+                        <p>Dos oficinas con un tiempo de espera promedio de 20 minutos. La Oficina A tiene una desviación estándar de 3 min (consistente), mientras la Oficina B tiene una de 15 min (inconsistente y poco fiable).</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- PRÁCTICA 3 -->
+        <div class="card" id="practica3">
+            <h2><i class="fas fa-tasks"></i> Práctica 3: Analizando la Consistencia del Servicio</h2>
+            <p>Usa la desviación estándar para descubrir cuál de dos servicios con el mismo promedio es, en realidad, problemático.</p>
+            <div class="example" style="text-align: center;">
+                <a href="recursos/tiempos_atencion_ciudadana.csv" class="cta-button" download="tiempos_atencion_ciudadana.csv"><i class="fas fa-file-excel"></i> Descargar Tiempos de Atención (.csv)</a>
+            </div>
+        </div>
+
+        <!-- NUEVA SECCIÓN: PRÁCTICA DE HISTOGRAMAS -->
+        <div class="card" id="practica4">
+            <details>
+                <summary><h2><i class="fas fa-chart-area"></i> 7. Práctica: De Datos Crudos a Histograma</h2></summary>
+                <div class="card-content">
+                    <p>Esta es una de las tareas más fundamentales del análisis de datos. Aprenderemos a tomar una lista desordenada de datos y a construir una tabla de frecuencias y un histograma para poder visualizar su estructura.</p>
+                    
+                    <div class="example" style="text-align: center;">
+                        <strong>Paso 1: Descarga los Datos Crudos</strong>
+                        <p style="margin-bottom: 1rem;">El siguiente archivo contiene las edades de 40 personas de un censo municipal. Descárgalo y ábrelo.</p>
+                        <a href="recursos/datos_edades_censo.csv" class="cta-button" download="datos_edades_censo.csv"><i class="fas fa-file-excel"></i> Descargar Datos de Edades (.csv)</a>
+                    </div>
+
+                    <h3 style="margin-top: 2.5rem;">Paso 2: Calcular los Parámetros de la Tabla</h3>
+                    <p>Para construir nuestra tabla, primero necesitamos definir los intervalos (los "grupos" de edad).</p>
+                    <ol>
+                        <li><strong>Número de Intervalos (k):</strong> Usaremos la Regla de Sturges, una fórmula común para esto. <code>k = 1 + 3.322 * log10(n)</code>. Siendo <strong>n</strong> el número de datos (40 en nuestro caso).<br>
+                        <code>k = 1 + 3.322 * log10(40) ≈ 1 + 3.322 * 1.602 ≈ 6.32</code>. Siempre se redondea al entero más cercano, así que usaremos <strong>k = 6 intervalos</strong>.</li>
+                        <li><strong>Rango (R):</strong> Encuentra el valor máximo y el valor mínimo en tus datos. <code>R = Valor Máximo - Valor Mínimo</code>.</li>
+                        <li><strong>Amplitud del Intervalo (A):</strong> Divide el Rango entre el número de intervalos. <code>A = R / k</code>. Redondea este número hacia arriba para que sea más fácil de trabajar (ej. si da 8.3, usa 9).</li>
+                    </ol>
+
+                    <h3>Paso 3: Construir la Tabla de Frecuencias</h3>
+                    <p>Ahora, crea una tabla con las siguientes columnas y ve contando cuántos datos caen en cada intervalo que definiste.</p>
+                    <div class="table-wrapper">
+                        <table style="text-align: center;">
+                            <thead>
+                                <tr>
+                                    <th>Intervalo de Edad</th>
+                                    <th>Frecuencia Absoluta (fi)</th>
+                                    <th>Frecuencia Relativa (hi)</th>
+                                    <th>Frecuencia Acumulada (Fi)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>[Límite Inf. - Límite Sup.]</td><td>(Conteo de datos)</td><td>(fi / total de datos)</td><td>(Suma de frecuencias)</td></tr>
+                                <tr><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Paso 4: Graficar el Histograma</h3>
+                    <p>El histograma es simplemente un gráfico de barras donde el eje X representa los intervalos de edad y el eje Y representa la Frecuencia Absoluta (fi). Esto te mostrará visualmente la distribución de edades en el municipio.</p>
+                    <img src="https://placehold.co/600x400/e8d5c4/2d2d2d?text=Tabla+de+Frecuencias+->+Histograma" alt="De Tabla a Histograma" class="content-image">
+                </div>
+            </details>
+        </div>
+
+        <!-- NUEVA SECCIÓN: MUESTREO -->
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-users"></i> 8. Introducción Conceptual al Muestreo</h2></summary>
+                <div class="card-content">
+                    <p>Rara vez podemos estudiar a toda la <strong>población</strong> (ej. todos los habitantes de un país). Es demasiado caro y lento. En su lugar, estudiamos una <strong>muestra</strong>, un subconjunto representativo de esa población.</p>
+                    <p>El objetivo del muestreo es poder hacer <strong>inferencias</strong>, es decir, generalizar los hallazgos de nuestra muestra a toda la población con un grado de confianza medible. La clave es que la muestra sea <strong>representativa</strong>. Si queremos conocer la opinión de una ciudad y solo encuestamos en barrios de altos ingresos, nuestra muestra no es representativa y las conclusiones serán erróneas.</p>
+
+                    <div class="example">
+                        <strong>Ejemplos Prácticos de Muestreo en el Sector Público:</strong>
+                        <div class="table-wrapper">
+                            <table style="margin-top: 1rem;">
+                                <thead>
+                                    <tr>
+                                        <th>Contexto</th>
+                                        <th>Población (El todo)</th>
+                                        <th>Muestra (La parte)</th>
+                                        <th>Inferencia (La conclusión)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Encuesta de Intención de Voto</strong></td>
+                                        <td>Todos los ciudadanos con derecho a voto en un país (ej. 90 millones).</td>
+                                        <td>1,500 votantes seleccionados al azar, respetando proporciones demográficas.</td>
+                                        <td>Estimar que el 45% de la población votará por un candidato, con un margen de error de +/- 3%.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Auditoría de un Programa Social</strong></td>
+                                        <td>Todos los expedientes de un programa de becas (ej. 500,000).</td>
+                                        <td>1,000 expedientes elegidos aleatoriamente de diferentes regiones.</td>
+                                        <td>Concluir que si el 5% de la muestra tiene errores, aproximadamente 25,000 expedientes a nivel nacional podrían requerir revisión.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Encuesta de Salud Pública</strong></td>
+                                        <td>Todos los adultos mayores de 60 años en una ciudad (ej. 200,000).</td>
+                                        <td>800 adultos mayores contactados por teléfono.</td>
+                                        <td>Generalizar que si el 30% de la muestra no se ha vacunado, es necesario lanzar una campaña para cubrir a unas 60,000 personas.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- NUEVA SECCIÓN: CASO DE ESTUDIO FINAL -->
+        <div class="card" id="practica-final">
+            <details>
+                <summary><h2><i class="fas fa-graduation-cap"></i> 9. Mini Caso de Estudio Final: Desempeño Escolar</h2></summary>
+                <div class="card-content">
+                    <p>¡Es hora de juntar todo! En este caso de estudio, actuarás como un analista para la Secretaría de Educación. Tu tarea es realizar un análisis descriptivo completo de un nuevo conjunto de datos sobre escuelas.</p>
+                    <div class="example" style="text-align: center;">
+                        <p style="margin-bottom: 1rem;">Descarga el archivo y sigue las instrucciones para completar tu primer reporte analítico.</p>
+                        <a href="recursos/caso_estudio_escuelas.csv" class="cta-button" download="caso_estudio_escuelas.csv"><i class="fas fa-file-excel"></i> Descargar Caso de Estudio (.csv)</a>
+                    </div>
+                    <h3 style="margin-top: 2.5rem;">Tu Misión:</h3>
+                    <ol>
+                        <li><strong>Explora y Limpia:</strong> Abre el archivo. Identifica y corrige los datos faltantes (celdas vacías) o erróneos (como "N/A"). Decide cómo manejar los datos faltantes (por ahora, puedes ignorar esas filas para los cálculos).</li>
+                        <li><strong>Análisis Descriptivo:</strong> Calcula la media, mediana y desviación estándar para las variables cuantitativas clave: `Numero_Alumnos`, `Presupuesto_Anual` y `Calificacion_Promedio_Matematicas`.</li>
+                        <li><strong>Visualiza:</strong> Crea un histograma para la `Calificacion_Promedio_Matematicas`. ¿Qué te dice su forma?</li>
+                        <li><strong>Reporte Final (Memo):</strong> Escribe un párrafo corto (2-3 líneas) resumiendo tus hallazgos más importantes para tu jefe. Por ejemplo: "Se realizó un análisis descriptivo de 15 escuelas. Se observa que la calificación promedio es de X con una desviación estándar de Y, lo que indica... Además, el histograma muestra una distribución..."</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Dr. Marco Antonio Leon Zaragoza|Otoño 2025</p>
+    </footer>
+
+</body>
+</html>

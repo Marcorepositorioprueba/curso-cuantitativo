@@ -1,0 +1,21 @@
+ID_Empleado,Dependencia,Puesto,Salario_Mensual
+101,Obras Publicas,Analista,1200
+102,Obras Publicas,Analista,1300
+103,Obras Publicas,Coordinador,2500
+104,Obras Publicas,Secretaria,950
+105,Obras Publicas,Analista Senior,1800
+201,Desarrollo Social,Promotor,900
+202,Desarrollo Social,Promotor,950
+203,Desarrollo Social,Coordinador,2200
+204,Desarrollo Social,Promotor,980
+205,Desarrollo Social,Psicologa,1500
+301,Secretaria General,Asistente,1100
+302,Secretaria General,Asesor,4000
+303,Secretaria General,Director General,15000
+304,Secretaria General,Asistente,1200
+305,Secretaria General,Chofer,1000
+401,Seguridad Publica,Oficial,1600
+402,Seguridad Publica,Oficial,1600
+403,Seguridad Publica,Comandante,3500
+404,Seguridad Publica,Oficial,1700
+405,Seguridad Publica,Cadete,1100

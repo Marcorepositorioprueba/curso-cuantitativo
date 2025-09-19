@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Riesgo de Misión</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Simulador de Riesgo de Misión</h1>
+            <p class="subtitle">De la Misión Espacial a tu Proyecto</p>
+        </header>
+
+        <main class="simulator">
+            <div class="controls-panel">
+                <h2>Panel de Control de Misión</h2>
+                <div id="mission-phases-container">
+                    <!-- Las fases de la misión se insertarán aquí dinámicamente -->
+                </div>
+                <button id="add-phase-btn">+ Añadir Nueva Fase</button>
+            </div>
+
+            <div class="results-panel">
+                <h2>Probabilidad de Éxito Total</h2>
+                <div class="total-probability-display">
+                    <span id="total-probability-value">100.00</span>%
+                </div>
+                <div class="probability-bar-container">
+                    <div id="probability-bar" style="width: 100%;"></div>
+                </div>
+                <div id="formula-display">
+                    <p>Fórmula: 1.00</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="lesson">
+                <h3>La Lección Universal: La Paradoja de la Cadena</h3>
+                <p>
+                    Este simulador demuestra la 'paradoja de la cadena': un sistema complejo compuesto de partes individualmente muy fiables puede ser, en conjunto, sorprendentemente frágil. Cada paso, cada dependencia, multiplica la incertidumbre. Este principio no solo se aplica a cohetes; es fundamental en la gestión de proyectos, finanzas, y estrategia. Una cadena es tan fuerte como su eslabón más débil... multiplicado por la debilidad de todos los demás.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
