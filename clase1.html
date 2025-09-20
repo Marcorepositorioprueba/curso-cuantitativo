@@ -400,7 +400,31 @@
             <h2><i class="fas fa-broom"></i> Práctica 2: Limpieza y Arreglo de Datos</h2>
             <p>La tarea más común de un analista. Aprende a identificar y corregir errores en un set de datos real.</p>
             <div class="example" style="text-align: center;">
-                <a href="recursos/reporte_ciudadano_sucio.csv" class="cta-button" download="reporte_ciudadano_sucio.csv"><i class="fas fa-file-excel"></i> Descargar Reporte Ciudadano (.csv)</a>
+                <a href="recursos/reporte_ciudadano_sucio.csv" class="cta-button" download="reporte_ciudadano_sucio.csv"><i class="fas fa-file-excel"></i> Descargar Reporte Ciudadano Sucio (.csv)</a>
+            </div>
+            <div class="example">
+                <strong>Pasos Específicos para Limpiar el Archivo <code>reporte_ciudadano_sucio.csv</code>:</strong>
+                <ol>
+                    <li>
+                        <strong>Paso 1: Unificar Formatos de Fecha (Columna `Fecha_Reporte`):</strong>
+                        <p>El archivo tiene fechas en formatos como `dd/mm/yyyy`, `dd-Mon-yyyy` y `yyyy/mm/dd`. Para unificarlas:</p>
+                        <p>Selecciona toda la columna `Fecha_Reporte`. Ve a la pestaña <code>Datos</code> > <code>Texto a Columnas</code>. Elige <code>Delimitado</code> > <code>Siguiente</code>. Desmarca todas las casillas > <code>Siguiente</code>. En "Formato de los datos en columnas", selecciona <code>Fecha</code> y en el menú desplegable elige la opción que coincida con el primer formato de tu lista (ej. `DMA`). Haz clic en `Finalizar`. Repite el proceso para los otros formatos hasta que toda la columna tenga una apariencia consistente y luego aplica un formato de fecha único desde la pestaña <code>Inicio</code>.</p>
+                    </li>
+                    <li>
+                        <strong>Paso 2: Estandarizar Nombres de Dependencias (Columna `Dependencia`):</strong>
+                        <p>Hay inconsistencias como `Des. Social` vs `desarrollo social` y espacios extra (` Obras Publicas`).</p>
+                        <p>Crea una columna auxiliar y usa la fórmula <code>=ESPACIOS(MINUSC(B2))</code> para limpiar espacios y convertir todo a minúsculas. Luego, usa <code>Buscar y Reemplazar</code> (Ctrl + B) para unificar los nombres, por ejemplo, reemplazar "des. social" por "desarrollo social".</p>
+                    </li>
+                    <li>
+                        <strong>Paso 3: Manejar Datos Faltantes (Columna `Dias_Respuesta`):</strong>
+                        <p>La columna tiene valores `N/A` y celdas vacías. Para manejarlos:</p>
+                        <p>Usa <code>Buscar y Reemplazar</code> (Ctrl + B) para reemplazar `N/A` con una celda en blanco. Luego, selecciona la columna, presiona <code>F5</code> > <code>Especial</code> > <code>Celdas en blanco</code>. Ahora puedes decidir si eliminar esas filas o rellenarlas con un valor, como la <strong>media</strong> o <strong>mediana</strong> de los días de respuesta, lo cual es una práctica común.</p>
+                    </li>
+                     <li>
+                        <strong>Paso 4: Eliminar Duplicados (Opcional pero recomendado):</strong>
+                        <p>Aunque en este archivo pequeño no hay duplicados, es una buena práctica. Selecciona todos tus datos, ve a <code>Datos</code> > <code>Quitar duplicados</code> y selecciona las columnas que identifican un registro único (por ejemplo, `ID_Reporte`).</p>
+                    </li>
+                </ol>
             </div>
         </div>
 
@@ -518,6 +542,20 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                    <div class="example">
+                        <strong>Práctica en Excel: Cómo Obtener una Muestra Aleatoria Simple</strong>
+                        <p>Vamos a simular que tienes una lista de 100 ciudadanos (nuestra "población") y quieres seleccionar una muestra aleatoria de 10 de ellos para una encuesta.</p>
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <a href="recursos/poblacion_total_ejemplo.csv" class="cta-button" download="poblacion_total_ejemplo.csv"><i class="fas fa-file-excel"></i> Descargar Población de Ejemplo (.csv)</a>
+                        </div>
+                        <ol>
+                            <li><strong>Paso 1: Asignar un Número Aleatorio.</strong> Abre el archivo. En la columna C (junto a los datos), escribe el encabezado "Numero_Aleatorio". En la celda C2, introduce la fórmula <code>=ALEATORIO()</code> y presiona Enter. Esta función genera un número al azar entre 0 y 1.</li>
+                            <li><strong>Paso 2: Arrastrar la Fórmula.</strong> Haz doble clic en la esquina inferior derecha de la celda C2 para que la fórmula se aplique a las 100 filas. Ahora cada ciudadano tiene un número aleatorio único asociado.</li>
+                            <li><strong>Paso 3: Ordenar por el Número Aleatorio.</strong> Selecciona las tres columnas (ID_Ciudadano, Opinion_Servicio, Numero_Aleatorio). Ve a la pestaña <code>Datos</code> > <code>Ordenar</code>. En la ventana, elige ordenar por "Numero_Aleatorio" de menor a mayor y haz clic en Aceptar.</li>
+                            <li><strong>Paso 4: Seleccionar la Muestra.</strong> ¡Listo! Los primeros 10 ciudadanos de tu lista ordenada son ahora tu muestra aleatoria simple. Puedes copiar y pegar estos 10 registros en una nueva hoja para analizarlos.</li>
+                        </ol>
+                        <p>Este método asegura que cada ciudadano tuvo exactamente la misma probabilidad de ser seleccionado, cumpliendo el principio fundamental del muestreo aleatorio simple.</p>
                     </div>
                 </div>
             </details>
