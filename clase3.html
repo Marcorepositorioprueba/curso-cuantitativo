@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 3 | Análisis Bivariado</title>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Dr. Marco Antonio Leon | Análisis Cuantitativo">
+    <meta property="og:description" content="Material del curso de Métodos Cuantitativos. Colegio Libre de Hidalgo.">
+    <meta property="og:image" content="https://Marcorepositorioprueba.github.io/curso-cuantitativo/recursos/logo.png">
+    <meta property="og:url" content="https://Marcorepositorioprueba.github.io/curso-cuantitativo/clase3.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: #fffaf8;
+            color: #2d2d2d;
+        }
+
+        /* Encabezado Superior */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2.5rem;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .top-header .logo img { max-height: 75px; }
+        .header-cta { display: flex; align-items: center; }
+        .header-cta .cta-button { background-color: #ff5d5d; color: #fff; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s; }
+        .header-cta .cta-button:hover { background-color: #e04a4a; }
+        .header-cta .secondary-button { background-color: #555; margin-right: 1rem;}
+        .header-cta .secondary-button:hover { background-color: #333; }
+
+        /* Sección Hero */
+        .hero { padding: 4rem 2.5rem; text-align: left; background-color: #f8f9fa; border-bottom: 1px solid #e9ecef; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.2; margin: 0 0 1rem 0; }
+        .hero p { font-size: 1.2rem; color: #555; max-width: 800px; }
+
+        /* Área de Contenido y Tarjetas */
+        .content-area { padding: 2rem 2.5rem 4rem 2.5rem; }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .card h2 {
+            font-size: 2rem; font-weight: 700; margin-top: 0; margin-bottom: 0;
+            padding-bottom: 0; display: flex; align-items: center; flex-grow: 1;
+        }
+        .card h2 .fa, .card h2 .fas { margin-right: 1rem; color: #ff5d5d; }
+        .card h3 { font-size: 1.6rem; font-weight: 600; color: #333; margin-top: 2.5rem; }
+        .card p { line-height: 1.8; }
+        .card .example {
+            background-color: #f9f9f9;
+            border-left: 5px solid #ff5d5d;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .card .example strong { color: #2d2d2d; }
+        
+        /* Estilos para Secciones Desplegables */
+        .card summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            list-style: none;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #ff5d5d;
+        }
+        .card summary::-webkit-details-marker { display: none; }
+        .card summary:after {
+            content: '\f078';
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            transition: transform 0.3s ease-in-out;
+            color: #ff5d5d;
+            font-size: 1.5rem;
+        }
+        .card details[open] > summary:after {
+            transform: rotate(180deg);
+        }
+        .card-content {
+            padding-top: 1.5rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        footer { text-align: center; padding: 3rem 0; background-color: #2d2d2d; color: #fff; }
+
+        @media (max-width: 768px) {
+            .top-header { flex-direction: column; align-items: flex-start; padding: 1rem; }
+            .top-header .logo { margin-bottom: 1rem; }
+            .header-cta { flex-direction: column; align-items: flex-start; width: 100%; }
+            .header-cta .cta-button { width: 100%; text-align: center; margin-right: 0; margin-bottom: 0.5rem; }
+            .hero { padding: 2rem 1rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .content-area { padding: 1.5rem 1rem; }
+            .card { padding: 1.5rem; }
+            .card h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="logo">
+            <a href="index.html"><img src="recursos/logo.png" alt="Logo del Curso"></a>
+        </div>
+        <div class="header-cta">
+            <a href="index.html" class="cta-button secondary-button">Volver al Inicio</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Clase 3: Conectando los Puntos - Análisis Descriptivo de Datos Bivariados</h1>
+        <p>Descubre cómo dos variables se relacionan entre sí y aprende a medir la fuerza y dirección de su asociación para generar evidencia más robusta.</p>
+    </section>
+
+    <main class="content-area">
+
+        <div class="card">
+            <details open>
+                <summary><h2><i class="fas fa-project-diagram"></i> 1. Introducción al Análisis Bivariado</h2></summary>
+                <div class="card-content">
+                    <p>Hasta ahora, hemos analizado variables de una en una (análisis univariado). Pero la realidad es compleja y las cosas rara vez ocurren de forma aislada. El verdadero poder del análisis de datos surge cuando empezamos a conectar los puntos. Eso es el <strong>análisis bivariado</strong>: el estudio de dos variables de forma simultánea para entender su relación.</p>
+                    <p>Este análisis nos permite responder preguntas como:</p>
+                    <ul>
+                        <li>¿Afecta la inversión en educación (variable A) a las tasas de criminalidad (variable B)?</li>
+                        <li>¿Hay alguna relación entre el género de una persona (variable A) y su salario (variable B)?</li>
+                        <li>¿El nivel de satisfacción laboral (variable A) depende del departamento en que trabaja una persona (variable B)?</li>
+                    </ul>
+                    <p>En esta clase, exploraremos los tres escenarios principales del análisis bivariado:</p>
+                    <ol>
+                        <li><strong>Numérica vs. Numérica:</strong> Correlación y diagramas de dispersión.</li>
+                        <li><strong>Categórica vs. Categórica:</strong> Tablas de contingencia.</li>
+                        <li><strong>Numérica vs. Categórica:</strong> Comparación de grupos y gráficos de cajas.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-link"></i> 2. Numérica vs. Numérica: Correlación</h2></summary>
+                <div class="card-content">
+                    <p>Este es el escenario más común. Queremos saber si a medida que una variable numérica sube, la otra sube, baja o no hace nada. La herramienta visual por excelencia es el <strong>diagrama de dispersión</strong>, que ya vimos en la clase anterior.</p>
+                    <p>Para cuantificar esta relación, usamos el <strong>coeficiente de correlación de Pearson (r)</strong>. Este número nos dice dos cosas:</p>
+                    <ul>
+                        <li><strong>Dirección:</strong> Si es positivo, ambas variables tienden a subir juntas. Si es negativo, cuando una sube, la otra tiende a bajar.</li>
+                        <li><strong>Fuerza:</strong> El valor va de -1 a 1. Cerca de -1 o 1 indica una relación lineal muy fuerte. Cerca de 0 indica una relación lineal débil o nula.</li>
+                    </ul>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> Analizando la relación entre años de experiencia y salario.
+                        <p>Observamos que a más años de experiencia, generalmente hay un mayor salario. El coeficiente de correlación de <strong>r = 0.85</strong> confirma una fuerte relación positiva.</p>
+                        <svg width="100%" height="200" viewBox="0 0 300 200" style="font-family: sans-serif; font-size: 10px;">
+                            <text x="0" y="15" fill="#555">Experiencia vs. Salario (r = 0.85)</text>
+                            <line x1="30" y1="20" x2="30" y2="180" stroke="#ccc" /><line x1="30" y1="180" x2="280" y2="180" stroke="#ccc" />
+                            <text x="5" y="25" fill="#555">Alto</text><text x="5" y="180" fill="#555">Bajo</text>
+                            <text x="30" y="195" fill="#555">Poca</text><text x="270" y="195" fill="#555">Mucha</text>
+                            <circle cx="50" cy="150" r="3" fill="#ff5d5d"></circle><circle cx="80" cy="130" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="120" cy="110" r="3" fill="#ff5d5d"></circle><circle cx="150" cy="100" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="190" cy="80" r="3" fill="#ff5d5d"></circle><circle cx="220" cy="60" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="250" cy="40" r="3" fill="#ff5d5d"></circle>
+                        </svg>
+                    </div>
+                    <div class="example" style="border-left-color: #e04a4a;">
+                        <h3><i class="fas fa-exclamation-triangle"></i> ¡Correlación no implica Causalidad!</h3>
+                        <p>Este es el error más famoso en estadística. Que dos variables se muevan juntas no significa que una cause a la otra. Por ejemplo, las ventas de helado y los ataques de tiburones están correlacionadas (ambas aumentan en verano), pero comer helado no provoca ataques de tiburón. La causa real es una tercera variable: el calor del verano.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-table"></i> 3. Categórica vs. Categórica: Tablas de Contingencia</h2></summary>
+                <div class="card-content">
+                    <p>Cuando trabajamos con dos variables categóricas (ej. 'género' y 'partido político'), usamos <strong>tablas de contingencia</strong> o tablas cruzadas. Estas tablas nos muestran cuántas observaciones caen en cada combinación de categorías.</p>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> ¿La preferencia por el trabajo (remoto vs. oficina) depende del departamento?
+                        <p><strong>Tabla de Cuentas:</strong></p>
+                        <table>
+                            <thead><tr><th>Departamento</th><th>Prefiere Remoto</th><th>Prefiere Oficina</th><th>Total</th></tr></thead>
+                            <tbody>
+                                <tr><td>Tecnología</td><td>80</td><td>20</td><td>100</td></tr>
+                                <tr><td>Recursos Humanos</td><td>30</td><td>30</td><td>60</td></tr>
+                                <tr><td>Ventas</td><td>40</td><td>60</td><td>100</td></tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top: 2rem;">La tabla de cuentas es útil, pero es difícil comparar grupos de diferentes tamaños. Para eso, usamos porcentajes. Por ejemplo, calculemos los <strong>porcentajes por fila</strong>:</p>
+                        <p><strong>Tabla de Porcentajes (por fila):</strong></p>
+                        <table>
+                            <thead><tr><th>Departamento</th><th>Prefiere Remoto</th><th>Prefiere Oficina</th></tr></thead>
+                            <tbody>
+                                <tr><td>Tecnología</td><td>80%</td><td>20%</td></tr>
+                                <tr><td>Recursos Humanos</td><td>50%</td><td>50%</td></tr>
+                                <tr><td>Ventas</td><td>40%</td><td>60%</td></tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top: 1rem;"><strong>Conclusión:</strong> Ahora es claro que el 80% del personal de Tecnología prefiere el trabajo remoto, en comparación con solo el 40% del de Ventas. Parece haber una relación entre el departamento y la preferencia.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-boxes"></i> 4. Numérica vs. Categórica: Comparación de Grupos</h2></summary>
+                <div class="card-content">
+                    <p>¿Cómo se comporta una variable numérica (ej. 'salario') en diferentes grupos (ej. 'ciudades')? Aquí, calculamos estadísticas descriptivas (media, mediana, desviación estándar) para la variable numérica en cada categoría de la variable categórica.</p>
+                    <p>Una de las mejores herramientas visuales para esto es el <strong>gráfico de cajas (Box Plot)</strong>. Un box plot nos muestra:</p>
+                    <ul>
+                        <li>La <strong>mediana</strong> (la línea dentro de la caja).</li>
+                        <li>El rango intercuartílico (la caja en sí, que contiene el 50% central de los datos).</li>
+                        <li>Los valores mínimos y máximos ("los bigotes").</li>
+                        <li>Los valores atípicos (puntos fuera de los bigotes).</li>
+                    </ul>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> Comparar la calificación de desempeño (numérica) de empleados en tres turnos diferentes (categórica).
+                        <div style="border: 1px solid #ddd; padding: 10px; border-radius: 5px; margin-top: 1rem;">
+                            <svg width="100%" height="200" viewBox="0 0 300 200" style="font-family: sans-serif; font-size: 10px;">
+                                <text x="0" y="15" fill="#555">Calificación de Desempeño por Turno</text>
+                                <!-- Eje Y -->
+                                <line x1="30" y1="20" x2="30" y2="180" stroke="#ccc" />
+                                <text x="5" y="25" fill="#555">10</text><text x="5" y="180" fill="#555">0</text>
+                                <!-- Eje X -->
+                                <line x1="30" y1="180" x2="280" y2="180" stroke="#ccc" />
+                                <text x="65" y="195" fill="#555">Mañana</text><text x="145" y="195" fill="#555">Tarde</text><text x="225" y="195" fill="#555">Noche</text>
+                                
+                                <!-- Box Plot 1: Mañana (Mediana 8, Caja 7-9, Bigotes 6-10) -->
+                                <line x1="80" y1="40" x2="80" y2="80" stroke="#555" /> <!-- Bigote superior -->
+                                <rect x="60" y="60" width="40" height="40" fill="#ff9d5d" stroke="#555" />
+                                <line x1="60" y1="80" x2="100" y2="80" stroke="#555" /> <!-- Mediana -->
+                                <line x1="80" y1="100" x2="80" y2="120" stroke="#555" /> <!-- Bigote inferior -->
+
+                                <!-- Box Plot 2: Tarde (Mediana 7, Caja 5-8, Bigotes 4-9) -->
+                                <line x1="160" y1="60" x2="160" y2="80" stroke="#555" />
+                                <rect x="140" y="80" width="40" height="60" fill="#ffc85d" stroke="#555" />
+                                <line x1="140" y1="100" x2="180" y2="100" stroke="#555" />
+                                <line x1="160" y1="140" x2="160" y2="160" stroke="#555" />
+
+                                <!-- Box Plot 3: Noche (Mediana 6, Caja 4-7, Bigotes 3-8) -->
+                                <line x1="240" y1="80" x2="240" y2="100" stroke="#555" />
+                                <rect x="220" y="100" width="40" height="60" fill="#5d5dff" stroke="#555" />
+                                <line x1="220" y1="120" x2="260" y2="120" stroke="#555" />
+                                <line x1="240" y1="160" x2="240" y2="180" stroke="#555" />
+                            </svg>
+                        </div>
+                        <p style="margin-top: 1rem;"><strong>Conclusión:</strong> Visualmente, es inmediato que el turno de la mañana tiende a tener calificaciones más altas y más consistentes (caja más pequeña) que el turno de la noche.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-calculator"></i> Profundizando: Varianza, Covarianza y Correlación</h2></summary>
+                <div class="card-content">
+                    <p>Para entender matemáticamente cómo se relacionan dos variables, necesitamos tres conceptos clave. Usaremos una pequeña muestra de nuestros datos de la encuesta para ilustrarlo.</p>
+                    
+                    <h3>Paso 1: Varianza (Repaso)</h3>
+                    <p>La varianza (σ²) nos dice qué tan dispersos están los datos de una variable respecto a su media. Una varianza alta significa datos muy dispersos; una baja, datos muy juntos.</p>
+                    <p><strong>Fórmula (para una muestra):</strong> <code>σ² = Σ(xᵢ - μ)² / (n-1)</code></p>
+
+                    <h3>Paso 2: Covarianza</h3>
+                    <p>La covarianza nos dice si dos variables se mueven en la misma dirección (positiva) o en direcciones opuestas (negativa). </p>
+                    <ul>
+                        <li><strong>Covarianza > 0:</strong> Cuando X sube, Y tiende a subir.</li>
+                        <li><strong>Covarianza < 0:</strong> Cuando X sube, Y tiende a bajar.</li>
+                    </ul>
+                    <p><strong>El problema:</strong> El valor (ej. 192250) no nos dice la <em>fuerza</em> de la relación, solo la dirección. Es difícil de interpretar.</p>
+                    <p><strong>Fórmula (para una muestra):</strong> <code>Cov(X,Y) = Σ((xᵢ - μₓ)(yᵢ - μᵧ)) / (n-1)</code></p>
+
+                    <h3>Paso 3: Correlación (La Solución)</h3>
+                    <p>El coeficiente de correlación (r) es simplemente la <strong>covarianza estandarizada</strong>. Se divide la covarianza por el producto de las desviaciones estándar de ambas variables. Esto ajusta el valor a un rango fijo de -1 a 1, haciéndolo fácil de interpretar.</p>
+                    <p><strong>Fórmula:</strong> <code>r = Cov(X,Y) / (σₓ * σᵧ)</code></p>
+
+                    <div class="example">
+                        <strong>Ejemplo de Cálculo: Correlación entre Edad (X) e Ingreso (Y)</strong>
+                        <p>Usaremos los primeros 4 registros de <code>encuesta_socioeconomica.csv</code>:</p>
+                        <ul>
+                            <li>Edades (X): {25, 45, 33, 58}</li>
+                            <li>Ingresos (Y): {15000, 35000, 22000, 45000}</li>
+                        </ul>
+                        <ol>
+                            <li><strong>Calcular Medias:</strong>
+                                <ul>
+                                    <li>Media de Edad (μₓ) = (25 + 45 + 33 + 58) / 4 = <strong>40.25</strong></li>
+                                    <li>Media de Ingreso (μᵧ) = (15k + 35k + 22k + 45k) / 4 = <strong>29,250</strong></li>
+                                </ul>
+                            </li>
+                            <li><strong>Calcular Covarianza:</strong>
+                                <ul>
+                                    <li>Sumatoria de productos de desviaciones: ((25-40.25)*(15k-29.25k)) + ... = 576,750</li>
+                                    <li>Cov(X,Y) = 576,750 / (4-1) = <strong>192,250</strong> (Positiva, como esperábamos)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Calcular Varianzas y Desviaciones Estándar:</strong>
+                                <ul>
+                                    <li>Varianza de Edad (σ²ₓ) = 207.58  => Desv. Est. (σₓ) = <strong>14.41</strong></li>
+                                    <li>Varianza de Ingreso (σ²ᵧ) = 178,916,667 => Desv. Est. (σᵧ) = <strong>13,376</strong></li>
+                                </ul>
+                            </li>
+                            <li><strong>Calcular Correlación:</strong>
+                                <ul>
+                                    <li>r = 192,250 / (14.41 * 13,376) = <strong>0.997</strong></li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p><strong>Conclusión:</strong> Obtenemos un coeficiente de correlación de <strong>r ≈ 0.997</strong>, lo que indica una relación lineal positiva casi perfecta para esta pequeña muestra.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card" id="practica">
+            <details>
+                <summary><h2><i class="fas fa-laptop-code"></i> 5. Práctica General</h2></summary>
+                <div class="card-content">
+                    <p>Ahora es tu turno. Descarga el siguiente archivo, que contiene datos de una encuesta socioeconómica ficticia. Tu misión es aplicar las tres técnicas que aprendimos.</p>
+                    <p><strong>Datos:</strong> `encuesta_socioeconomica.csv`</p>
+                    <ol>
+                        <li><strong>Numérica vs. Numérica:</strong> Crea un <strong>gráfico de dispersión</strong> para visualizar la relación entre `edad` e `ingreso_mensual`. Calcula (o estima visualmente) la dirección y fuerza de la correlación.</li>
+                        <li><strong>Categórica vs. Categórica:</strong> Crea una <strong>tabla de contingencia</strong> para analizar si hay una relación entre `nivel_educativo` y `satisfaccion_con_la_vida`.</li>
+                        <li><strong>Numérica vs. Categórica:</strong> Compara el `ingreso_mensual` entre los diferentes grupos de `nivel_educativo`. Calcula la media de ingreso para cada grupo y, si puedes, crea un <strong>gráfico de cajas</strong>.</li>
+                    </ol>
+                    <div class="example" style="text-align: center;">
+                        <a href="recursos/encuesta_socioeconomica.csv" class="cta-button" download="encuesta_socioeconomica.csv"><i class="fas fa-file-csv"></i> Descargar Archivo de Práctica (.csv)</a>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Dr. Marco Antonio Leon Zaragoza|Otoño 2025</p>
+    </footer>
+
+</body>
+</html>

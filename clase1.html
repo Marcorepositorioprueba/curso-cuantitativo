@@ -434,10 +434,35 @@
                 <summary><h2><i class="fas fa-chart-bar"></i> 6. Medidas de Dispersión</h2></summary>
                 <div class="card-content">
                     <p>No basta con conocer el centro, necesitamos saber qué tan "esparcidos" están los datos. Esto nos habla de consistencia y variabilidad.</p>
+                    
+                    <h4 style="margin-top: 2rem;">¿Qué es la Desviación Estándar en palabras sencillas?</h4>
+                    <p>Imagina que eres un profesor y acabas de calificar un examen. El <strong>promedio (la media)</strong> de la clase fue 8. Esto te da una idea del centro, pero no te cuenta toda la historia.</p>
+                    <p>La <strong>desviación estándar</strong> es como una "regla" que mide, en promedio, qué tan lejos está cada calificación individual del promedio de 8.</p>
+                    <ul>
+                        <li style="margin-bottom: 1rem;"><strong>Una desviación estándar BAJA (ej. 0.5 puntos):</strong> Significa que la mayoría de los estudiantes sacaron notas muy cercanas a 8. Las calificaciones están muy agrupadas, son consistentes. El desempeño del grupo es predecible.</li>
+                        <li><strong>Una desviación estándar ALTA (ej. 3 puntos):</strong> Significa que las calificaciones están muy dispersas. Tienes estudiantes con 10, otros con 5, y de todo en medio. El desempeño del grupo es inconsistente y menos predecible.</li>
+                    </ul>
+                    <p>En resumen, mientras la media te dice el "centro de gravedad" de tus datos, la desviación estándar te dice el <strong>grado de dispersión o consistencia</strong> alrededor de ese centro. Es la métrica clave para entender la variabilidad.</p>
+
                     <img src="https://placehold.co/600x300/e8d5c4/2d2d2d?text=Baja+Dispersion+vs+Alta+Dispersion" alt="Diagrama de Dispersión" class="content-image">
                     <div class="example">
                         <strong>Ejemplo Práctico: Tiempos de Espera</strong>
                         <p>Dos oficinas con un tiempo de espera promedio de 20 minutos. La Oficina A tiene una desviación estándar de 3 min (consistente), mientras la Oficina B tiene una de 15 min (inconsistente y poco fiable).</p>
+                    </div>
+                    <div class="example">
+                        <strong>Otro Ejemplo Aplicado a Políticas Públicas: Impacto de un Programa Social</strong>
+                        <p>Un gobierno implementa un programa de capacitación laboral para aumentar el ingreso de los beneficiarios. Después de un año, se miden los resultados en dos ciudades piloto: Ciudad A y Ciudad B.</p>
+                        <ul>
+                            <li style="margin-bottom: 1rem;">Ambas ciudades reportan el mismo <strong>aumento promedio</strong> de ingreso: <strong>$150 USD</strong> mensuales por persona.</li>
+                            <li style="margin-bottom: 1rem;"><strong>Ciudad A:</strong> Desviación Estándar de <strong>$20 USD</strong>.</li>
+                            <li><strong>Ciudad B:</strong> Desviación Estándar de <strong>$90 USD</strong>.</li>
+                        </ul>
+                        <p><strong>Análisis:</strong></p>
+                        <ul>
+                            <li style="margin-bottom: 1rem;"><strong>Ciudad A (Baja Dispersión):</strong> Una desviación estándar baja nos dice que el programa funciona de manera muy consistente. La gran mayoría de los participantes tuvieron un aumento de ingreso muy cercano a los $150. El beneficio es predecible y se distribuye de forma equitativa.</li>
+                            <li><strong>Ciudad B (Alta Dispersión):</strong> Una desviación estándar alta es una señal de alerta. Aunque el promedio es el mismo, implica que los resultados son muy desiguales. Probablemente, un pequeño grupo de personas consiguió empleos muy bien pagados (aumentando su ingreso en, digamos, $400), mientras que una gran parte de los participantes apenas vio una mejora (quizás solo $10 o $20).</li>
+                        </ul>
+                        <p><strong>Conclusión para el analista:</strong> No se puede reportar que 'ambos programas son igual de exitosos'. El programa de la Ciudad A es un modelo a seguir por su consistencia, mientras que el de la Ciudad B necesita ser rediseñado para asegurar que sus beneficios lleguen a la mayoría y no solo a unos pocos.</p>
                     </div>
                 </div>
             </details>
@@ -582,6 +607,166 @@
             </details>
         </div>
 
+        <div class="card" id="solucion-practica-final">
+            <details>
+                <summary><h2 style="font-size: 1.6rem; color: #333;"><i class="fas fa-check-circle"></i> Solución Guiada del Caso de Estudio Final</h2></summary>
+                <div class="card-content">
+                    <p>A continuación se presenta una resolución paso a paso del caso de estudio, ideal para que los estudiantes puedan comparar sus resultados.</p>
+                    
+                    <h4>Paso 1: Exploración y Limpieza de Datos</h4>
+                    <p>Al abrir <code>caso_estudio_escuelas.csv</code>, se observa que hay datos faltantes en varias filas:</p>
+                    <ul>
+                        <li>La <strong>Escuela Morelos</strong> (ID 4) y la <strong>Escuela Leona Vicario</strong> (ID 14) tienen "N/A" en la calificación.</li>
+                        <li>La <strong>Escuela Francisco Villa</strong> (ID 8) no tiene dato de presupuesto.</li>
+                        <li>La <strong>Escuela Justo Sierra</strong> (ID 12) no tiene dato de antigüedad del director.</li>
+                    </ul>
+                    <p>Para este análisis, se decide ignorar las filas o los datos faltantes al momento de calcular cada estadística para no distorsionar los resultados.</p>
+                    
+                    <h4>Paso 2: Análisis Descriptivo</h4>
+                    <p>Tras considerar los datos faltantes, se calculan las medidas de tendencia central y dispersión para las variables de interés. Se utilizaron 15 registros para Alumnos, 14 para Presupuesto y 13 para Calificación.</p>
+                    <div class="table-wrapper">
+                        <table style="text-align: center;">
+                            <thead>
+                                <tr>
+                                    <th>Métrica</th>
+                                    <th>Número de Alumnos</th>
+                                    <th>Presupuesto Anual</th>
+                                    <th>Calificación Prom. (Matemáticas)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Media</strong></td><td>361</td><td>$113,357</td><td>7.86</td></tr>
+                                <tr><td><strong>Mediana</strong></td><td>350</td><td>$102,500</td><td>8.0</td></tr>
+                                <tr><td><strong>Desviación Estándar</strong></td><td>222.23</td><td>$58,588</td><td>0.58</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4>Paso 3: Visualización (Histograma de Calificaciones)</h4>
+                    <p>Para visualizar la distribución de las calificaciones, se agrupan en intervalos (clases) y se cuenta la frecuencia de escuelas en cada uno.</p>
+                    <div class="table-wrapper">
+                        <table style="text-align: center;">
+                            <thead><tr><th>Intervalo de Calificación</th><th>Número de Escuelas (Frecuencia)</th></tr></thead>
+                            <tbody>
+                                <tr><td>6.5 - 7.0</td><td>1</td></tr>
+                                <tr><td>7.0 - 7.5</td><td>2</td></tr>
+                                <tr><td>7.5 - 8.0</td><td>3</td></tr>
+                                <tr><td>8.0 - 8.5</td><td>5</td></tr>
+                                <tr><td>8.5 - 9.0</td><td>2</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>Interpretación del Histograma:</strong> La distribución de calificaciones tiene un pico en el intervalo de 8.0 a 8.5, lo que sugiere que la mayoría de las escuelas tienden a un rendimiento bueno. La distribución está ligeramente sesgada a la izquierda (hacia las calificaciones más bajas), indicando que hay algunas escuelas con un rendimiento notablemente inferior que "jalan" el promedio hacia abajo (la media de 7.86 es menor que la mediana de 8.0).</p>
+
+                    <h4>Paso 4: Reporte Final (Memo)</h4>
+                    <div class="example">
+                        <strong>MEMORÁNDUM</strong><br>
+                        <strong>PARA:</strong> Dirección, Secretaría de Educación<br>
+                        <strong>DE:</strong> Analista de Datos<br>
+                        <strong>ASUNTO:</strong> Análisis Descriptivo Preliminar de Desempeño Escolar<br>
+                        <p>Se realizó un análisis descriptivo de 15 escuelas. Se observa que la calificación promedio en matemáticas es de <strong>7.86</strong> con una desviación estándar de <strong>0.58</strong>, lo que indica una consistencia relativamente alta en el rendimiento entre escuelas. La mediana del presupuesto es de <strong>$102,500</strong>, revelando que la mitad de las escuelas opera con menos de esta cantidad. El histograma de calificaciones muestra una concentración de escuelas en el rango de 8.0-8.5, pero con una cola hacia la izquierda que merece atención. Se recomienda investigar los factores de las escuelas con calificaciones por debajo de 7.5.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+    <!-- MINI CALCULADORA DE FRECUENCIAS -->
+        <div class="card" id="freq-calculator">
+            <h2><i class="fas fa-calculator"></i> Mini-Calculadora de Frecuencias</h2>
+            <p>Pega aquí una columna de números (separados por saltos de línea, comas o espacios) para calcular automáticamente una tabla de frecuencias lista para un histograma.</p>
+            <textarea id="dataInput" rows="10" style="width: 100%; font-family: monospace; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;" placeholder="Pega tus datos aquí..."></textarea>
+            <button id="calculateBtn" class="cta-button" style="margin-top: 1rem; width: 100%;">Calcular Tabla de Frecuencias</button>
+            
+            <div id="summary" style="margin-top: 2rem; font-size: 0.9rem; background-color: #f9f9f9; padding: 1rem; border-radius: 8px;"></div>
+
+            <h3 style="margin-top: 2rem;">Resultado (listo para copiar a Excel):</h3>
+            <pre id="resultOutput" style="background-color: #e9ecef; color: #212529; padding: 1rem; border-radius: 8px; white-space: pre-wrap;"></pre>
+        </div>
+
+        <script>
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            const summaryDiv = document.getElementById('summary');
+            const outputPre = document.getElementById('resultOutput');
+
+            // 1. Get and parse data
+            const rawText = document.getElementById('dataInput').value;
+            const data = rawText.trim().split(/\s+|\n+|,/).map(parseFloat).filter(val => !isNaN(val));
+            
+            if (data.length < 5) { // Require a reasonable amount of data
+                summaryDiv.innerHTML = "<p style='color: red;'>Error: Por favor, introduce al menos 5 números válidos.</p>";
+                outputPre.innerText = "";
+                return;
+            }
+
+            // 2. Basic Calculations
+            const n = data.length;
+            data.sort((a, b) => a - b); // Sort data to easily find min/max
+            const min = data[0];
+            const max = data[data.length - 1];
+            const range = max - min;
+
+            // 3. Sturges' Rule for number of intervals (k)
+            const k = Math.round(1 + 3.322 * Math.log10(n));
+            
+            // Handle case with no range
+            if (range === 0) {
+                summaryDiv.innerHTML = `<p>Se encontraron <strong>${n}</strong> puntos de datos. Todos los valores son idénticos.</p>`;
+                outputPre.innerText = `Intervalo\tFrecuencia\n${min}\t${n}`;
+                return;
+            }
+
+            // 4. Calculate Amplitude (A) and adjust to a "nice" number
+            const rawAmplitude = range / k;
+            
+            function getNiceAmplitude(rawA) {
+                const power = Math.pow(10, Math.floor(Math.log10(rawA)));
+                const norm = rawA / power; // Value between 1 and 10
+                if (norm < 1.5) return 1 * power;
+                if (norm < 2.5) return 2 * power;
+                if (norm < 4) return 3 * power; // Added more granularity
+                if (norm < 7) return 5 * power;
+                return 10 * power;
+            }
+            const amplitude = getNiceAmplitude(rawAmplitude);
+
+            // 5. Build Frequency Bins
+            const bins = new Array(k).fill(0);
+            const startValue = min;
+
+            data.forEach(val => {
+                let binIndex = Math.floor((val - startValue) / amplitude);
+                // Special case for the max value to ensure it falls into the last bin
+                if (val === max) {
+                    binIndex = k - 1;
+                }
+                // Ensure index is within bounds
+                if (binIndex >= 0 && binIndex < k) {
+                    bins[binIndex]++;
+                }
+            });
+
+            // 6. Format Summary and Output
+            summaryDiv.innerHTML = `
+                <p><strong>Resumen del Cálculo:</strong></p>
+                <ul>
+                    <li><strong>Total de datos (n):</strong> ${n}</li>
+                    <li><strong>Intervalos sugeridos (k):</strong> ${k} (vía Regla de Sturges)</li>
+                    <li><strong>Rango (Máx - Mín):</strong> ${max} - ${min} = ${range.toFixed(2)}</li>
+                    <li><strong>Amplitud calculada:</strong> ${rawAmplitude.toFixed(3)}, ajustada a <strong>${amplitude.toFixed(3)}</strong> para mayor claridad.</li>
+                </ul>
+            `;
+
+            let outputString = "Intervalo\tFrecuencia\n";
+            for (let i = 0; i < k; i++) {
+                const lower = startValue + (i * amplitude);
+                const upper = startValue + ((i + 1) * amplitude);
+                const label = `[${lower.toFixed(2)} - ${upper.toFixed(2)})`;
+                outputString += `${label}\t${bins[i]}\n`;
+            }
+
+            outputPre.innerText = outputString;
+        });
+        </script>
     </main>
 
     <footer>
