@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 5 | Distribuciones de Probabilidad</title>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Dr. Marco Antonio Leon | Análisis Cuantitativo">
+    <meta property="og:description" content="Material del curso de Métodos Cuantitativos. Colegio Libre de Hidalgo.">
+    <meta property="og:image" content="https://Marcorepositorioprueba.github.io/curso-cuantitativo/recursos/logo.png">
+    <meta property="og:url" content="https://Marcorepositorioprueba.github.io/curso-cuantitativo/clase5.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background-color: #fffaf8; color: #2d2d2d; }
+        .top-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2.5rem; background-color: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .top-header .logo img { max-height: 75px; }
+        .header-cta { display: flex; align-items: center; }
+        .header-cta .cta-button { background-color: #ff5d5d; color: #fff; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s; }
+        .header-cta .cta-button:hover { background-color: #e04a4a; }
+        .header-cta .secondary-button { background-color: #555; margin-right: 1rem;}
+        .header-cta .secondary-button:hover { background-color: #333; }
+        .hero { padding: 4rem 2.5rem; text-align: left; background-color: #f8f9fa; border-bottom: 1px solid #e9ecef; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.2; margin: 0 0 1rem 0; }
+        .hero p { font-size: 1.2rem; color: #555; max-width: 800px; }
+        .content-area { padding: 2rem 2.5rem 4rem 2.5rem; }
+        .card { background-color: #fff; border-radius: 8px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); padding: 2.5rem; margin-bottom: 2.5rem; }
+        .card h2 { font-size: 2rem; font-weight: 700; margin-top: 0; margin-bottom: 0; padding-bottom: 0; display: flex; align-items: center; flex-grow: 1; }
+        .card h2 .fa, .card h2 .fas { margin-right: 1rem; color: #ff5d5d; }
+        .card h3 { font-size: 1.6rem; font-weight: 600; color: #333; margin-top: 2.5rem; }
+        .card p { line-height: 1.8; }
+        .card .example { background-color: #f9f9f9; border-left: 5px solid #ff5d5d; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; }
+        .card summary { display: flex; justify-content: space-between; align-items: center; cursor: pointer; list-style: none; padding-bottom: 0.8rem; border-bottom: 2px solid #ff5d5d; }
+        .card summary::-webkit-details-marker { display: none; }
+        .card summary:after { content: '\f078'; font-family: "Font Awesome 5 Free"; font-weight: 900; transition: transform 0.3s ease-in-out; color: #ff5d5d; font-size: 1.5rem; }
+        .card details[open] > summary:after { transform: rotate(180deg); }
+        .card-content { padding-top: 1.5rem; }
+        footer { text-align: center; padding: 3rem 0; background-color: #2d2d2d; color: #fff; }
+        @media (max-width: 768px) { .top-header { flex-direction: column; align-items: flex-start; padding: 1rem; } .header-cta { flex-direction: column; align-items: flex-start; width: 100%; } .hero { padding: 2rem 1rem; } .hero h1 { font-size: 2.2rem; } .content-area { padding: 1.5rem 1rem; } .card { padding: 1.5rem; } .card h2 { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="logo">
+            <a href="index.html"><img src="recursos/logo.png" alt="Logo del Curso"></a>
+        </div>
+        <div class="header-cta">
+            <a href="index.html" class="cta-button secondary-button">Volver al Inicio</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Clase 5: De la Probabilidad a la Predicción: Distribuciones de Probabilidad</h1>
+        <p>En este bloque, pasamos de calcular eventos aislados a modelar y predecir patrones de comportamiento para la asignación de recursos y la gestión de servicios.</p>
+    </section>
+
+    <main class="content-area">
+
+        <div class="card">
+            <details open>
+                <summary><h2><i class="fas fa-chart-bar"></i> 5. Introducción a las Distribuciones de Probabilidad</h2></summary>
+                <div class="card-content">
+                    <p>Una <strong>distribución de probabilidad</strong> es un modelo matemático que describe la probabilidad de cada posible resultado de un evento. En lugar de preguntar "¿cuál es la probabilidad de que un paciente llegue a urgencias en la próxima hora?", una distribución nos permite preguntar "¿cuál es la probabilidad de que lleguen 0, 1, 2, 3, o más de 10?".</p>
+                    <p>Esto es fundamental para la gestión, ya que nos permite entender no solo si algo puede pasar, sino con qué frecuencia y en qué magnitud, permitiéndonos planificar para un rango de escenarios posibles.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-dice"></i> 6. Distribuciones Discretas: Binomial y Poisson</h2></summary>
+                <div class="card-content">
+                    <p>Estas distribuciones modelan eventos que se pueden contar en números enteros (0, 1, 2, 3, etc.).</p>
+                    <h3 style="margin-top: 2rem;">Distribución Binomial (Éxito/Fracaso)</h3>
+                    <p>Se usa cuando un proceso se repite un número fijo de veces (`n` intentos) y en cada intento solo hay dos resultados posibles (éxito o fracaso), con una probabilidad de éxito constante (`p`).</p>
+                    <div class="example">
+                        <strong>Aplicación: Auditoría de Contratos.</strong> Un órgano fiscalizador audita <strong>10</strong> contratos de obra pública al azar. Por experiencia, saben que la probabilidad de que un contrato tenga irregularidades es del <strong>20%</strong> (p=0.20). La distribución binomial les permite responder: ¿Cuál es la probabilidad de encontrar <strong>exactamente 3</strong> contratos con irregularidades? ¿Y la probabilidad de encontrar <strong>al menos uno</strong>?
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">Distribución de Poisson (Eventos en el Tiempo o Espacio)</h3>
+                    <p>Se usa para modelar el número de veces que un evento ocurre en un intervalo específico (ej. una hora, un día, un kilómetro cuadrado), conociendo la tasa promedio de ocurrencia (lambda, λ).</p>
+                    <div class="example">
+                        <strong>Aplicación: Gestión de un Centro de Atención Ciudadana.</strong> Un centro 311 recibe, en promedio, <strong>8 llamadas por hora</strong> (λ=8) sobre problemas de alumbrado público. La distribución de Poisson permite al director del centro calcular: ¿Cuál es la probabilidad de que en la próxima hora no se reciba <strong>ninguna llamada</strong> (y el personal pueda dedicarse a otras tareas)? ¿Y la probabilidad de que se reciban <strong>más de 15 llamadas</strong> (y el sistema se sature)? Esto es esencial para decidir cuántos operadores telefónicos asignar por turno.
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-bell"></i> 7. La Reina de las Distribuciones: La Distribución Normal</h2></summary>
+                <div class="card-content">
+                    <p>La distribución normal, o "curva de campana", es la más importante de todas. Modela variables continuas y describe una gran cantidad de fenómenos naturales y sociales donde los valores tienden a agruparse alrededor de un promedio.</p>
+                    <p>Su poder reside en la <strong>Regla Empírica (68-95-99.7)</strong>: conociendo la media (μ) y la desviación estándar (σ), podemos predecir el rango en que caerá la mayoría de nuestros datos.</p>
+                    <div class="example">
+                        <strong>Aplicación: Tiempos de Respuesta de Trámites.</strong> La oficina de licencias de construcción tarda, en promedio, <strong>20 días</strong> (μ=20) en procesar un permiso, con una desviación estándar de <strong>3 días</strong> (σ=3). Usando la distribución normal, el director puede afirmar con alta confianza que:
+                        <ul>
+                            <li>El 68% de los permisos tardarán entre 17 y 23 días.</li>
+                            <li>El 95% de los permisos tardarán entre 14 y 26 días.</li>
+                        </ul>
+                        Esta información es oro puro para establecer Acuerdos de Nivel de Servicio (ANS) realistas con la ciudadanía y para detectar cuándo un trámite en particular está tomando un tiempo "anormalmente" largo y requiere intervención.
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-hospital"></i> 8. Práctica: Modelando la Demanda de un Servicio de Urgencias</h2></summary>
+                <div class="card-content">
+                    <p><strong>Escenario:</strong> Eres el administrador de un hospital público. El servicio de urgencias recibe un promedio de <strong>4 pacientes por hora</strong> (λ=4) con crisis de asma durante la temporada de alta contaminación.</p>
+                    <p><strong>Tu Tarea:</strong> Usando los principios de la distribución de Poisson, discute cómo calcularías las siguientes probabilidades y qué decisiones tomarías en cada caso:</p>
+                    <ol>
+                        <li>La probabilidad de que en la próxima hora lleguen <strong>exactamente 0 pacientes</strong>. (¿Podrías reasignar temporalmente a una enfermera?).</li>
+                        <li>La probabilidad de que lleguen <strong>exactamente 4 pacientes</strong>. (¿Es este el escenario para el que deberías tener personal de base?).</li>
+                        <li>La probabilidad de que lleguen <strong>más de 8 pacientes</strong>. (¿Necesitas un plan de contingencia o personal de guardia para este escenario de alta demanda?).</li>
+                    </ol>
+                    <div class="example">
+                        <p>Este ejercicio no requiere el cálculo exacto (que se vería en un curso más avanzado), sino el razonamiento gerencial. Demuestra cómo una distribución de probabilidad permite a un administrador planificar no solo para el promedio, sino para todo el espectro de posibilidades, optimizando recursos y minimizando riesgos.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Dr. Marco Antonio Leon Zaragoza|Otoño 2025</p>
+    </footer>
+
+</body>
+</html>

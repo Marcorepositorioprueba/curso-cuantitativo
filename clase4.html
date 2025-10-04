@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 4 | Fundamentos de Probabilidad</title>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Dr. Marco Antonio Leon | Análisis Cuantitativo">
+    <meta property="og:description" content="Material del curso de Métodos Cuantitativos. Colegio Libre de Hidalgo.">
+    <meta property="og:image" content="https://Marcorepositorioprueba.github.io/curso-cuantitativo/recursos/logo.png">
+    <meta property="og:url" content="https://Marcorepositorioprueba.github.io/curso-cuantitativo/clase4.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background-color: #fffaf8; color: #2d2d2d; }
+        .top-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2.5rem; background-color: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .top-header .logo img { max-height: 75px; }
+        .header-cta { display: flex; align-items: center; }
+        .header-cta .cta-button { background-color: #ff5d5d; color: #fff; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s; }
+        .header-cta .cta-button:hover { background-color: #e04a4a; }
+        .header-cta .secondary-button { background-color: #555; margin-right: 1rem;}
+        .header-cta .secondary-button:hover { background-color: #333; }
+        .hero { padding: 4rem 2.5rem; text-align: left; background-color: #f8f9fa; border-bottom: 1px solid #e9ecef; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.2; margin: 0 0 1rem 0; }
+        .hero p { font-size: 1.2rem; color: #555; max-width: 800px; }
+        .content-area { padding: 2rem 2.5rem 4rem 2.5rem; }
+        .card { background-color: #fff; border-radius: 8px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); padding: 2.5rem; margin-bottom: 2.5rem; }
+        .card h2 { font-size: 2rem; font-weight: 700; margin-top: 0; margin-bottom: 0; padding-bottom: 0; display: flex; align-items: center; flex-grow: 1; }
+        .card h2 .fa, .card h2 .fas { margin-right: 1rem; color: #ff5d5d; }
+        .card h3 { font-size: 1.6rem; font-weight: 600; color: #333; margin-top: 2.5rem; }
+        .card p { line-height: 1.8; }
+        .card .example { background-color: #f9f9f9; border-left: 5px solid #ff5d5d; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; }
+        .card summary { display: flex; justify-content: space-between; align-items: center; cursor: pointer; list-style: none; padding-bottom: 0.8rem; border-bottom: 2px solid #ff5d5d; }
+        .card summary::-webkit-details-marker { display: none; }
+        .card summary:after { content: '\f078'; font-family: "Font Awesome 5 Free"; font-weight: 900; transition: transform 0.3s ease-in-out; color: #ff5d5d; font-size: 1.5rem; }
+        .card details[open] > summary:after { transform: rotate(180deg); }
+        .card-content { padding-top: 1.5rem; }
+        footer { text-align: center; padding: 3rem 0; background-color: #2d2d2d; color: #fff; }
+        @media (max-width: 768px) { .top-header { flex-direction: column; align-items: flex-start; padding: 1rem; } .header-cta { flex-direction: column; align-items: flex-start; width: 100%; } .hero { padding: 2rem 1rem; } .hero h1 { font-size: 2.2rem; } .content-area { padding: 1.5rem 1rem; } .card { padding: 1.5rem; } .card h2 { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="logo">
+            <a href="index.html"><img src="recursos/logo.png" alt="Logo del Curso"></a>
+        </div>
+        <div class="header-cta">
+            <a href="index.html" class="cta-button secondary-button">Volver al Inicio</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Clase 4: Fundamentos de Probabilidad en la Gestión Pública</h1>
+        <p>La probabilidad como herramienta para medir, gestionar y comunicar la incertidumbre en la toma de decisiones del sector público.</p>
+    </section>
+
+    <div class="content-area" style="padding-top:2.5rem; padding-bottom:0;">
+        <div class="card">
+            <h2><i class="fas fa-bolt"></i> Video de Introduccin: Un Caso Extremo de Probabilidad</h2>
+            <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 8px;">
+                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/7mqHBEOwbo4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <main class="content-area">
+
+        <div class="card">
+            <details open>
+                <summary><h2><i class="fas fa-balance-scale"></i> 1. Midiendo la Incertidumbre</h2></summary>
+                <div class="card-content">
+                    <p>En la gestión pública, la incertidumbre es una constante. No sabemos con certeza si un programa social alcanzará sus metas, si un desastre natural ocurrirá, o si una inversión pública generará el retorno esperado. La <strong>probabilidad</strong> es el lenguaje matemático que nos permite cuantificar esa incertidumbre.</p>
+                    <p>En lugar de decir "es posible que llueva", podemos decir "hay un 70% de probabilidad de lluvia". Esta simple cifra nos permite tomar decisiones más informadas: emitir alertas, preparar equipos de emergencia y comunicar el riesgo al público de forma clara.</p>
+                    <div class="example">
+                        <strong>Aplicaciones Prácticas:</strong>
+                        <ul>
+                            <li style="margin-bottom: 1rem;"><strong>Gestión de Riesgos (Protección Civil):</strong> Un director de protección civil usa modelos que calculan la <strong>probabilidad de impacto</strong> de un huracán. Una probabilidad del 10% puede activar una alerta temprana, mientras que una del 40% puede iniciar evacuaciones.</li>
+                            <li style="margin-bottom: 1rem;"><strong>Salud Pública:</strong> Un epidemiólogo calcula que, basado en datos históricos y actuales, hay un <strong>40% de probabilidad</strong> de un brote de sarampión en los próximos 6 meses. Esto justifica el costo de adelantar una campaña de vacunación preventiva.</li>
+                            <li><strong>Finanzas y Presupuesto:</strong> La Tesorería, al analizar 50 proyectos de obra pública pasados, encuentra que 15 de ellos excedieron su presupuesto. La probabilidad empírica de sobrecosto es del <strong>30%</strong> (15/50). Basado en esto, se exige una <strong>reserva de contingencia</strong> del 15% del presupuesto para cualquier nuevo proyecto.</li>
+                        </ul>
+                    </div>
+
+                    <div class="example" style="border-left-color: #900C3F;">
+                        <h3><i class="fas fa-virus"></i> Caso de Estudio Extenso: COVID-19 y la Probabilidad Condicional</h3>
+                        <p>Al inicio de la pandemia, la pregunta no era solo "¿cuál es la probabilidad de contagiarse?", sino "¿cómo cambia esa probabilidad <strong>dado que</strong> una persona tiene ciertas condiciones?". Aquí es donde la probabilidad condicional se volvió crucial para la toma de decisiones.</p>
+                        <p>Imaginemos que las autoridades de salud pública, usando datos de sus hospitales, establecen las siguientes probabilidades (<strong>nota: estos son números ilustrativos</strong>):</p>
+                        <ul>
+                            <li style="margin-bottom: 1rem;">La probabilidad general de requerir hospitalización si una persona se contagiaba era del 5%. Se escribe: <code>P(Hospitalización) = 0.05</code>.</li>
+                            <li style="margin-bottom: 1rem;">La probabilidad de hospitalización si la persona contagiada <strong>no estaba vacunada</strong> era del 8%. Se escribe: <code>P(Hospitalización | No Vacunado) = 0.08</code>.</li>
+                            <li>La probabilidad de hospitalización si la persona contagiada <strong>sí estaba vacunada</strong> (esquema completo) era del 0.5%. Se escribe: <code>P(Hospitalización | Vacunado) = 0.005</code>.</li>
+                        </ul>
+                        <h4>Implicaciones para la Gestión Pública:</h4>
+                        <p>Estos datos, aunque simples, tienen consecuencias enormes:</p>
+                        <ol>
+                            <li><strong>Justificación de Políticas:</strong> La diferencia drástica entre 8% y 0.5% se convierte en el argumento más sólido para justificar campañas masivas de vacunación, demostrando una reducción del riesgo relativo de más del 90%.</li>
+                            <li><strong>Planificación de Recursos:</strong> Si se proyectan 100,000 nuevos casos en una región, el gobierno puede estimar cuántas camas de hospital necesitará. Si la mayoría de la población no está vacunada, se preparan para 8,000 hospitalizaciones (100,000 * 0.08). Si la mayoría está vacunada, el número esperado baja a 500 (100,000 * 0.005). La decisión de dónde y cuántos hospitales de campaña construir depende directamente de esta probabilidad condicional.</li>
+                            <li><strong>Comunicación de Riesgos:</strong> Permite al público tomar decisiones informadas. No es lo mismo decir "el riesgo es bajo" que decir "tu riesgo personal disminuye 16 veces si estás vacunado".</li>
+                        </ol>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-ruler-combined"></i> 2. Los 3 Enfoques de la Probabilidad</h2></summary>
+                <div class="card-content">
+                    <p>Para asignar un valor de probabilidad a un evento, usamos principalmente tres enfoques distintos, cada uno con su propia lógica y campo de aplicación.</p>
+                    
+                    <h3 style="margin-top: 2rem;">1. Enfoque Clásico (A Priori)</h3>
+                    <p>Se basa en la suposición de que todos los resultados posibles de un experimento son igualmente probables. Es el enfoque que usamos para juegos de azar.</p>
+                    <div class="example">
+                        <strong>Ejemplos:</strong>
+                        <ul>
+                            <li style="margin-bottom: 1rem;"><strong>Lanzar un dado:</strong> La probabilidad de obtener un 5 es de 1/6, ya que hay 6 caras igualmente probables.</li>
+                            <li><strong>Licitación Idealizada:</strong> En una licitación pública perfectamente transparente con 4 competidores de igual capacidad, la probabilidad "a priori" de que una empresa gane es de 1/4 o 25%. En la realidad, este enfoque es limitado porque los competidores nunca son idénticos.</li>
+                        </ul>
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">2. Enfoque Frecuencial (Empírico)</h3>
+                    <p>Se basa en la frecuencia con la que un evento ha ocurrido en el pasado tras un gran número de repeticiones. Es el enfoque más utilizado en la gestión pública porque se basa en datos históricos y evidencia observable.</p>
+                    <div class="example">
+                        <strong>Ejemplos:</strong>
+                        <ul>
+                            <li style="margin-bottom: 1rem;"><strong>Congestión Vehicular:</strong> El departamento de transporte analiza datos de tráfico de los últimos 2 años (730 días) y descubre que en 250 de ellos, el tráfico superó la capacidad máxima. La probabilidad empírica de congestión es: <code>P(Congestión) = 250 / 730 ≈ 34.2%</code>.</li>
+                            <li><strong>Fallas en Servicios:</strong> Un municipio registra que durante los últimos 500 días, en 15 de ellos se reportaron fallas en el suministro de agua. La probabilidad de que haya una falla en un día cualquiera es del 3% (15/500). Esto permite planificar los equipos de guardia.</li>
+                        </ul>
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">3. Enfoque Subjetivo</h3>
+                    <p>Se utiliza cuando hay poca o ninguna data histórica y los resultados no son igualmente probables. La probabilidad se asigna basándose en el juicio, la experiencia y la intuición de un experto.</p>
+                    <div class="example">
+                        <strong>Ejemplos:</strong>
+                        <ul>
+                            <li style="margin-bottom: 1rem;"><strong>Negociación Política:</strong> La directora de un organismo, basándose en su experiencia, estima que hay un <strong>60% de probabilidad</strong> de que dos países alcancen un acuerdo comercial este año. Es una estimación basada en su juicio sobre el clima político.</li>
+                            <li style="margin-bottom: 1rem;"><strong>Viabilidad de un Proyecto Innovador:</strong> Un comité de evaluación asigna una <strong>probabilidad de éxito del 70%</strong> a un nuevo programa social que nunca se ha intentado antes. Esta cifra refleja la confianza del comité en el diseño del programa, no en datos pasados.</li>
+                            <li><strong>Riesgo Político-Financiero:</strong> Cuando agencias como Moody's o S&P dicen que hay una "baja probabilidad" de que el gobierno de EE.UU. entre en default por no elevar el techo de la deuda, usan probabilidad subjetiva. No hay datos históricos de un default, por lo que basan su estimación en el análisis del clima político y la conducta de los legisladores.</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-project-diagram"></i> 3. Reglas para el Análisis de Riesgos</h2></summary>
+                <div class="card-content">
+                    <p>Las reglas de probabilidad nos permiten combinar la probabilidad de eventos simples para analizar escenarios complejos.</p>
+                    <h3>Probabilidad Condicional: P(A|B)</h3>
+                    <p>Esta es quizás la regla más importante en la práctica. Mide la probabilidad de que ocurra un evento A, <strong>dado que</strong> ya ocurrió un evento B. Nos ayuda a actualizar nuestras creencias a la luz de nueva información.</p>
+                    <div class="example">
+                        <strong>Ejemplo (Probabilidad Condicional):</strong> La probabilidad general de que un ciudadano apruebe una nueva ley fiscal es del 40% (P(A) = 0.40). Sin embargo, si sabemos que el ciudadano es propietario de una pequeña empresa (evento B), la probabilidad de que la apruebe baja al 15%. Esto se expresa como <code>P(A|B) = 0.15</code>. Esta información permite al gobierno diseñar campañas de comunicación específicas para diferentes grupos de interés.
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-tasks"></i> 4. Práctica: Matriz de Riesgo de un Proyecto</h2></summary>
+                <div class="card-content">
+                    <p>Imaginemos que somos responsables de lanzar una nueva plataforma de trámites en línea para el ayuntamiento. El éxito del proyecto depende de tres eventos clave. Usando el enfoque frecuencial y subjetivo, nuestro equipo ha estimado las siguientes probabilidades:</p>
+                    <ul>
+                        <li>Probabilidad de que el software se desarrolle sin bugs críticos (Evento A): <strong>90%</strong></li>
+                        <li>Probabilidad de que los servidores soporten el tráfico del lanzamiento (Evento B): <strong>95%</strong></li>
+                        <li>Probabilidad de que la campaña de marketing logre una adopción del 50% en el primer mes (Evento C): <strong>70%</strong></li>
+                    </ul>
+                    <p>Suponiendo que estos eventos son independientes, la probabilidad de un lanzamiento 100% exitoso es el producto de todas las probabilidades.</p>
+                    <div class="example">
+                        <strong>Cálculo del Éxito Total:</strong>
+                        <p><code>P(Éxito Total) = P(A) * P(B) * P(C)</code></p>
+                        <p><code>P(Éxito Total) = 0.90 * 0.95 * 0.70 = 0.5985</code></p>
+                        <p><strong>Conclusión:</strong> A pesar de que cada componente individual tiene una alta probabilidad de éxito, la probabilidad combinada de que todo salga perfecto es de apenas un <strong>59.85%</strong>. Esto nos alerta de que el proyecto es más riesgoso de lo que parece y nos permite pensar en planes de contingencia: ¿qué pasa si el marketing falla? ¿Tenemos servidores de respaldo?</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+            <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-piggy-bank"></i> 5. Aplicación Práctica: ¿Cuánto Cuesta la Promesa de una Pensión?</h2></summary>
+                <div class="card-content">
+                    <p>Este ejemplo ilustra cómo la probabilidad y las finanzas se combinan en el mundo real para la planificación a largo plazo en el sector público.</p>
+                    <div class="example">
+                        <strong>Escenario:</strong> Un sistema de pensiones tiene un único trabajador de <strong>40 años</strong>. La jubilación es a los <strong>65 años</strong> y la pensión prometida es de <strong>$10,000 anuales</strong>. La tasa de rendimiento de las inversiones del fondo es del <strong>5%</strong>.
+                    </div>
+
+                    <h3>Paso 1: Calcular el Monto Total Futuro de la Promesa</h3>
+                    <p>Primero, calculamos el valor total si todo sale como se espera. Los datos actuariales nos dicen que la esperanza de vida para un jubilado de 65 años es de <strong>17 años</strong>.</p>
+                    <p><strong>Cálculo:</strong> <code>$10,000/año * 17 años = $170,000</code></p>
+                    <p>Este es el monto total que el fondo desembolsaría durante la jubilación de esa persona.</p>
+
+                    <h3>Paso 2: Ajustar por Probabilidad de Supervivencia</h3>
+                    <p>No todos los trabajadores llegan a la edad de jubilación. Las tablas de mortalidad indican que la probabilidad de que una persona de 40 años llegue a los 65 es del <strong>85%</strong>. Por lo tanto, el 'valor esperado' de la promesa se ajusta.</p>
+                    <p><strong>Cálculo:</strong> <code>$170,000 * 0.85 = $144,500</code></p>
+
+                    <h3>Paso 3: Traer el Monto a Valor Presente</h3>
+                    <p>El fondo necesita saber cuánto dinero tener <strong>hoy</strong>. Sabiendo que tienen <strong>25 años</strong> (de los 40 a los 65) para que su dinero crezca, descuentan el valor futuro a su equivalente presente.</p>
+                    <p><strong>Fórmula del Valor Presente (PV):</strong> <code>PV = Monto Futuro / (1 + tasa)^años</code></p>
+                    <p><strong>Cálculo:</strong> <code>PV = $144,500 / (1.05)^25 ≈ $42,675.40</code></p>
+
+                    <div class="example">
+                        <h4>Conclusión del Ejemplo</h4>
+                        <p>El fondo de pensiones necesita tener <strong>$42,675.40</strong> en su reserva hoy para poder garantizar la pensión futura de este único trabajador. Este cálculo, multiplicado por miles de empleados, es la base de la solvencia de cualquier sistema de pensiones.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Dr. Marco Antonio Leon Zaragoza|Otoño 2025</p>
+    </footer>
+
+</body>
+</html>

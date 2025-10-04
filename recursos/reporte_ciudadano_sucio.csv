@@ -1,13 +1,50 @@
 ID_Reporte,Fecha_Reporte,Dependencia,Clasificacion_Reporte,Dias_Respuesta
-1,10/05/2025, Obras Publicas,Bacheo,5
-2,12-May-2025,Des. Social,Apoyo Economico,12
-3,2025/05/15,Seguridad Publica,Rondin Policial,2
-4,18/05/2025,desarrollo social,Comedor Comunitario,8
-5,20/05/2025, Obras Publicas,Fuga de Agua,N/A
-6,21-May-2025,Seguridad Publica ,Vandalismo,3
-7,2025/05/22,Des. Social,Apoyo Economico,
-8,25/05/2025,Obras Publicas,Alumbrado Publico,7
-9,28-May-2025,desarrollo social,Comedor Comunitario,9
-10,01/06/2025,Seguridad Publica,Rondin Policial,N/A
-11,02/06/2025,Des. Social,Apoyo Economico,11
-12,2025/06/05, Obras Publicas,Bacheo,6
+1,"sábado, 10 de mayo de 2025", Obras Publicas,Bacheo,5
+2,"lunes, 12 de mayo de 2025",Desarrollo Social,Apoyo Economico,12
+3,"jueves, 15 de mayo de 2025",Seguridad Publica,Rondin Policial,2
+4,"domingo, 18 de mayo de 2025",desarrollo social,Comedor Comunitario,8
+5,"martes, 20 de mayo de 2025", Obras Publicas,Fuga de Agua,2
+6,"miércoles, 21 de mayo de 2025",Seguridad Publica ,Vandalismo,3
+7,"jueves, 22 de mayo de 2025",Desarrollo Social,Apoyo Economico,0
+8,"domingo, 25 de mayo de 2025",Obras Publicas,Alumbrado Publico,7
+9,"miércoles, 28 de mayo de 2025",desarrollo social,Comedor Comunitario,9
+10,"domingo, 1 de junio de 2025",Seguridad Publica,Rondin Policial,2
+11,"lunes, 2 de junio de 2025",Desarrollo Social,Apoyo Economico,11
+12,"jueves, 5 de junio de 2025", Obras Publicas,Bacheo,6
+13,"sábado, 10 de mayo de 2025", Obras Publicas,Bacheo,5
+14,"lunes, 12 de mayo de 2025",Desarrollo Social,Apoyo Economico,12
+15,"jueves, 15 de mayo de 2025",Seguridad Publica,Rondin Policial,2
+16,"domingo, 18 de mayo de 2025",desarrollo social,Comedor Comunitario,8
+17,"martes, 20 de mayo de 2025", Obras Publicas,Fuga de Agua,2
+18,"miércoles, 21 de mayo de 2025",Seguridad Publica ,Vandalismo,3
+19,"jueves, 22 de mayo de 2025",Desarrollo Social,Apoyo Economico,0
+20,"domingo, 25 de mayo de 2025",Obras Publicas,Alumbrado Publico,7
+21,"miércoles, 28 de mayo de 2025",desarrollo social,Comedor Comunitario,9
+22,"domingo, 1 de junio de 2025",Seguridad Publica,Rondin Policial,2
+23,"lunes, 2 de junio de 2025",Desarrollo Social,Apoyo Economico,11
+24,"jueves, 5 de junio de 2025", Obras Publicas,Bacheo,6
+25,"sábado, 10 de mayo de 2025", Obras Publicas,Bacheo,5
+26,"lunes, 12 de mayo de 2025",Desarrollo Social,Apoyo Economico,12
+27,"jueves, 15 de mayo de 2025",Seguridad Publica,Rondin Policial,2
+28,"domingo, 18 de mayo de 2025",desarrollo social,Comedor Comunitario,8
+29,"martes, 20 de mayo de 2025", Obras Publicas,Fuga de Agua,2
+30,"miércoles, 21 de mayo de 2025",Seguridad Publica ,Vandalismo,3
+31,"jueves, 22 de mayo de 2025",Desarrollo Social,Apoyo Economico,0
+32,"domingo, 25 de mayo de 2025",Obras Publicas,Alumbrado Publico,7
+33,"miércoles, 28 de mayo de 2025",desarrollo social,Comedor Comunitario,9
+34,"domingo, 1 de junio de 2025",Seguridad Publica,Rondin Policial,2
+35,"lunes, 2 de junio de 2025",Desarrollo Social,Apoyo Economico,11
+36,"jueves, 5 de junio de 2025", Obras Publicas,Bacheo,6
+37,"sábado, 10 de mayo de 2025", Obras Publicas,Bacheo,5
+38,"lunes, 12 de mayo de 2025",Desarrollo Social,Apoyo Economico,12
+39,"jueves, 15 de mayo de 2025",Seguridad Publica,Rondin Policial,2
+40,"domingo, 18 de mayo de 2025",desarrollo social,Comedor Comunitario,8
+41,"martes, 20 de mayo de 2025", Obras Publicas,Fuga de Agua,2
+42,"miércoles, 21 de mayo de 2025",Seguridad Publica ,Vandalismo,3
+43,"jueves, 22 de mayo de 2025",Desarrollo Social,Apoyo Economico,0
+44,"domingo, 25 de mayo de 2025",Obras Publicas,Alumbrado Publico,7
+45,"miércoles, 28 de mayo de 2025",desarrollo social,Comedor Comunitario,9
+46,"domingo, 1 de junio de 2025",Seguridad Publica,Rondin Policial,2
+47,"lunes, 2 de junio de 2025",Desarrollo Social,Apoyo Economico,11
+48,"jueves, 5 de junio de 2025", Obras Publicas,Bacheo,6
+,,,,5.583333333
