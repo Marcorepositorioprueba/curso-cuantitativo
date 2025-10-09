@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 6 | Regresión Lineal Simple</title>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Dr. Marco Antonio Leon | Análisis Cuantitativo">
+    <meta property="og:description" content="Material del curso de Métodos Cuantitativos. Colegio Libre de Hidalgo.">
+    <meta property="og:image" content="https://Marcorepositorioprueba.github.io/curso-cuantitativo/recursos/logo.png">
+    <meta property="og:url" content="https://Marcorepositorioprueba.github.io/curso-cuantitativo/clase6.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background-color: #fffaf8; color: #2d2d2d; }
+        .top-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2.5rem; background-color: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .top-header .logo img { max-height: 75px; }
+        .header-cta { display: flex; align-items: center; }
+        .header-cta .cta-button { background-color: #ff5d5d; color: #fff; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s; }
+        .header-cta .cta-button:hover { background-color: #e04a4a; }
+        .header-cta .secondary-button { background-color: #555; margin-right: 1rem;}
+        .header-cta .secondary-button:hover { background-color: #333; }
+        .hero { padding: 4rem 2.5rem; text-align: left; background-color: #f8f9fa; border-bottom: 1px solid #e9ecef; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.2; margin: 0 0 1rem 0; }
+        .hero p { font-size: 1.2rem; color: #555; max-width: 800px; }
+        .content-area { padding: 2rem 2.5rem 4rem 2.5rem; }
+        .card { background-color: #fff; border-radius: 8px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); padding: 2.5rem; margin-bottom: 2.5rem; }
+        .card h2 { font-size: 2rem; font-weight: 700; margin-top: 0; margin-bottom: 0; padding-bottom: 0; display: flex; align-items: center; flex-grow: 1; }
+        .card h2 .fa, .card h2 .fas { margin-right: 1rem; color: #ff5d5d; }
+        .card h3 { font-size: 1.6rem; font-weight: 600; color: #333; margin-top: 2.5rem; }
+        .card p { line-height: 1.8; }
+        .card .example { background-color: #f9f9f9; border-left: 5px solid #ff5d5d; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; }
+        .card summary { display: flex; justify-content: space-between; align-items: center; cursor: pointer; list-style: none; padding-bottom: 0.8rem; border-bottom: 2px solid #ff5d5d; }
+        .card summary::-webkit-details-marker { display: none; }
+        .card summary:after { content: '\f078'; font-family: "Font Awesome 5 Free"; font-weight: 900; transition: transform 0.3s ease-in-out; color: #ff5d5d; font-size: 1.5rem; }
+        .card details[open] > summary:after { transform: rotate(180deg); }
+        .card-content { padding-top: 1.5rem; }
+        footer { text-align: center; padding: 3rem 0; background-color: #2d2d2d; color: #fff; }
+        @media (max-width: 768px) { .top-header { flex-direction: column; align-items: flex-start; padding: 1rem; } .header-cta { flex-direction: column; align-items: flex-start; width: 100%; } .hero { padding: 2rem 1rem; } .hero h1 { font-size: 2.2rem; } .content-area { padding: 1.5rem 1rem; } .card { padding: 1.5rem; } .card h2 { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="logo">
+            <a href="index.html"><img src="recursos/logo.png" alt="Logo del Curso"></a>
+        </div>
+        <div class="header-cta">
+            <a href="index.html" class="cta-button secondary-button">Volver al Inicio</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Clase 6: Del 'Qué Pasó' al 'Qué Pasará' - Introducción a la Regresión Lineal</h1>
+        <p>Dejamos de solo describir nuestros datos para empezar a modelarlos. Aprenderemos a encontrar relaciones entre variables para hacer predicciones informadas.</p>
+    </section>
+
+    <main class="content-area">
+
+        <div class="card">
+            <details open>
+                <summary><h2><i class="fas fa-chart-line"></i> 1. ¿Qué es la Regresión Lineal?</h2></summary>
+                <div class="card-content">
+                    <p>La regresión lineal es una técnica que nos permite encontrar y modelar la relación entre dos variables. La idea central es trazar una <strong>línea recta</strong>, llamada "línea de mejor ajuste", a través de un conjunto de puntos de datos en un gráfico de dispersión.</p>
+                    <p>El objetivo es usar el valor de una variable, que llamamos <strong>variable independiente (X)</strong>, para predecir el valor de otra, la <strong>variable dependiente (Y)</strong>.</p>
+                    <div class="example">
+                        <strong>Pregunta de política pública:</strong> ¿Podemos usar la tasa de desempleo de una ciudad (variable X) para predecir su tasa de criminalidad (variable Y)? La regresión lineal nos ayuda a responder esto.
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details open>
+                <summary><h2><i class="fas fa-calculator"></i> 2. La Ecuación de la Recta y su Significado</h2></summary>
+                <div class="card-content">
+                    <p>Seguramente recuerdas de la escuela la ecuación de la recta: <code>y = mx + b</code>. En estadística, la escribimos de una forma un poco diferente, pero la idea es exactamente la misma:</p>
+                    <p style="text-align: center; font-size: 1.5rem; font-weight: bold; color: #333;">Y = β₀ + β₁X + ε</p>
+                    <ul>
+                        <li><strong>Y</strong>: Es la variable que queremos predecir (la dependiente; ej. tasa de delitos).</li>
+                        <li><strong>X</strong>: Es la variable que usamos para predecir (la independiente; ej. gasto en seguridad).</li>
+                        <li><strong>β₀ (beta-cero)</strong>: Es el <strong>intercepto</strong>. Es el valor predicho de Y cuando X es igual a 0.</li>
+                        <li><strong>β₁ (beta-uno)</strong>: Es la <strong>pendiente</strong>. Este es el número más importante. Nos dice cuánto cambia Y, en promedio, por cada aumento de una unidad en X.</li>
+                        <li><strong>ε (épsilon)</strong>: Es el <strong>término de error</strong>. Representa la parte de Y que nuestro modelo no puede explicar; la variación aleatoria.</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details open>
+                <summary><h2><i class="fas fa-shield-alt"></i> 3. Ejemplo: Gasto en Seguridad vs. Tasa de Delitos</h2></summary>
+                <div class="card-content">
+                    <p>Imaginemos que un municipio ha registrado su inversión anual en seguridad (en millones) y la tasa de delitos por cada 1,000 habitantes. Quieren saber si su inversión está teniendo un efecto.</p>
+                    <p>Al graficar los datos, obtenemos un diagrama de dispersión. Luego, aplicamos la regresión lineal para trazar la línea que mejor se ajusta a esos puntos.</p>
+                    <div class="example">
+                        <strong>Relación entre Gasto en Seguridad y Tasa de Delitos</strong>
+                        <svg width="100%" height="250" viewBox="0 0 400 250" style="font-family: sans-serif; font-size: 12px;">
+                            <!-- Ejes -->
+                            <line x1="40" y1="20" x2="40" y2="220" stroke="#ccc" />
+                            <line x1="40" y1="220" x2="380" y2="220" stroke="#ccc" />
+                            <text x="35" y="25" text-anchor="end">16</text>
+                            <text x="35" y="220" text-anchor="end">4</text>
+                            <text x="10" y="120" text-anchor="middle" transform="rotate(-90, 10, 120)">Tasa de Delitos</text>
+                            <text x="40" y="235" text-anchor="middle">0</text>
+                            <text x="380" y="235" text-anchor="middle">10</text>
+                            <text x="210" y="245" text-anchor="middle" font-weight="bold">Gasto en Seguridad (Millones)</text>
+
+                            <!-- Puntos de datos (de datos_regresion_simple.csv) -->
+                            <circle cx="68" cy="65" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="80" cy="89" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="92" cy="77" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="104" cy="105" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="120" cy="115" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="140" cy="127" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="152" cy="137" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="168" cy="145" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="180" cy="158" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="200" cy="165" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="224" cy="181" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="240" cy="193" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="260" cy="205" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="276" cy="215" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="300" cy="231" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="332" cy="245" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="360" cy="259" r="3" fill="#ff5d5d"></circle>
+
+                            <!-- Línea de Regresión (aprox. Y = 16 - 1.3X) -->
+                            <line x1="40" y1="52" x2="380" y2="218" stroke="#5d5dff" stroke-width="2" stroke-dasharray="6,4" />
+                            <text x="250" y="100" fill="#5d5dff" font-weight="bold">Y = 16.1 - 1.34X</text>
+                        </svg>
+                        <p style="margin-top: 1rem;"><strong>Interpretación del modelo:</strong></p>
+                        <ul>
+                            <li><strong>β₀ = 16.1</strong>: Si el gasto en seguridad fuera 0, nuestro modelo predice una tasa de delitos de 16.1. (A menudo, el intercepto no tiene una interpretación práctica en el mundo real).</li>
+                            <li><strong>β₁ = -1.34</strong>: ¡Esta es la clave! Por cada <strong>millón adicional</strong> invertido en seguridad, la tasa de delitos <strong>disminuye en promedio 1.34 puntos</strong>.</li>
+                        </ul>
+                    </div>
+                    <h4 style="margin-top: 2rem;">Ahora tú en Excel:</h4>
+                    <ol>
+                        <li>Descarga el archivo de datos.</li>
+                        <li>Selecciona las dos columnas, ve a "Insertar" > "Gráficos" > "Dispersión".</li>
+                        <li>Haz clic derecho en cualquier punto del gráfico y selecciona "Agregar línea de tendencia".</li>
+                        <li>En las opciones de la línea de tendencia, marca las casillas "Presentar ecuación en el gráfico" y "Presentar el valor R cuadrado en el gráfico".</li>
+                    </ol>
+                    <div class="example" style="text-align: center;">
+                        <a href="recursos/datos_regresion_simple.csv" class="cta-button" download="datos_regresion_simple.csv"><i class="fas fa-file-csv"></i> Descargar Datos del Ejemplo</a>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-ruler-combined"></i> 4. ¿Qué tan bueno es el modelo? R² y Valor p</h2></summary>
+                <div class="card-content">
+                    <p>Obtener una ecuación no es suficiente. Necesitamos saber si el modelo es bueno. Para eso usamos dos indicadores principales:</p>
+                    <h3>Coeficiente de Determinación (R²)</h3>
+                    <p>El R² nos dice <strong>qué porcentaje de la variación</strong> en nuestra variable dependiente (Y) es explicado por nuestra variable independiente (X). Su valor va de 0 a 1.</p>
+                    <div class="example">
+                        Para nuestro ejemplo, Excel nos daría un <strong>R² de 0.95</strong>. Esto se interpreta como: "El <strong>95% de la variación</strong> en la tasa de delitos de nuestro municipio puede ser explicada por el gasto en seguridad". ¡Es un modelo muy fuerte!
+                    </div>
+                    <h3>Significancia Estadística (Valor p)</h3>
+                    <p>El Valor p nos dice cuál es la probabilidad de que la relación que hemos encontrado sea producto de la pura casualidad. La regla general es:</p>
+                    <ul>
+                        <li>Si <strong>Valor p < 0.05</strong>: La relación es <strong>estadísticamente significativa</strong>. Es muy poco probable que sea una coincidencia.</li>
+                        <li>Si <strong>Valor p > 0.05</strong>: La relación no es significativa. No podemos confiar en el modelo.</li>
+                    </ul>
+                     <div class="example">
+                        En nuestro caso, el Valor p para el gasto en seguridad sería muy pequeño (ej. 0.0001), confirmando que la relación es real.
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-tasks"></i> 5. Práctica: Prediciendo la Satisfacción Ciudadana</h2></summary>
+                <div class="card-content">
+                    <p>Ahora es tu turno. Eres analista en la oficina de atención ciudadana y quieres probar la hipótesis de que "a menor tiempo de respuesta en los trámites, mayor es la satisfacción ciudadana".</p>
+                    <p>Usa el archivo de datos proporcionado que contiene el tiempo promedio de respuesta (en días) y el porcentaje de satisfacción ciudadana para diferentes trámites.</p>
+                    <ol>
+                        <li>Descarga los datos y crea el gráfico de dispersión con su línea de tendencia en Excel.</li>
+                        <li><strong>Observa la ecuación:</strong> ¿Cuál es el valor de la pendiente (β₁)? ¿Es positivo o negativo? ¿Qué te dice eso sobre la relación?</li>
+                        <li><strong>Analiza el R²:</strong> ¿Qué porcentaje de la satisfacción ciudadana es explicado por el tiempo de respuesta?</li>
+                    </ol>
+                    <div class="example" style="text-align: center;">
+                        <a href="recursos/datos_practica_regresion.csv" class="cta-button" download="datos_practica_regresion.csv"><i class="fas fa-file-csv"></i> Descargar Datos de la Práctica</a>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Dr. Marco Antonio Leon Zaragoza|Otoño 2025</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación Parcial 1 | Métodos Cuantitativos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background-color: #fffaf8; color: #2d2d2d; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 900px; margin: 2rem; }
+        .card { background-color: #fff; border-radius: 8px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); padding: 2.5rem; margin-bottom: 2.5rem; }
+        .card h2 { font-size: 2rem; font-weight: 700; margin-top: 0; margin-bottom: 2rem; border-bottom: 2px solid #ff5d5d; padding-bottom: 0.8rem; display: flex; align-items: center; }
+        .card h3 { font-size: 1.6rem; font-weight: 600; color: #333; margin-top: 2.5rem; }
+        .card p { line-height: 1.8; }
+        .card .question { border-left: 4px solid #ff9d5d; padding-left: 1.5rem; margin-bottom: 2rem; }
+        .card .question p { margin-top: 0; }
+        .example { background-color: #f9f9f9; padding: 1.5rem; margin: 1rem 0; border-radius: 8px; }
+        .password-container { text-align: center; padding: 3rem; }
+        .password-container input { font-size: 1.2rem; padding: 0.8rem; border-radius: 5px; border: 1px solid #ccc; margin-right: 0.5rem; }
+        .password-container button { font-size: 1.2rem; background-color: #ff5d5d; color: #fff; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s; border: none; cursor: pointer; }
+        .password-container button:hover { background-color: #e04a4a; }
+        #error-message { color: #e04a4a; font-weight: 600; margin-top: 1rem; }
+        #exam-container { display: none; }
+        summary { font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div id="password-container" class="card">
+            <div class="password-container">
+                <h2><i class="fas fa-lock"></i> Evaluación Bloqueada</h2>
+                <p>Por favor, introduce la contraseña para comenzar el examen.</p>
+                <input type="password" id="password" placeholder="Contraseña...">
+                <button onclick="checkPassword()">Desbloquear</button>
+                <p id="error-message"></p>
+            </div>
+        </div>
+
+        <div id="exam-container">
+            <div class="card">
+                <div style="text-align:center; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h1>Evaluación Parcial 1</h1>
+                    <p><strong>Tiempo estimado:</strong> 45-50 minutos. | <strong>Puntaje total:</strong> 100 puntos.</p>
+                    <p>Lea cuidadosamente cada pregunta y responda de forma clara y concisa.</p>
+                </div>
+
+                <!-- SECCIÓN I -->
+                <h3>Sección I: Análisis Descriptivo (20 puntos)</h3>
+                <div class="question">
+                    <p><strong>1.</strong> Se presenta la siguiente lista con los salarios mensuales (en miles de pesos) de 7 empleados de un área de gobierno:</p>
+                    <p style="text-align: center; font-size: 1.2rem; font-weight: bold;">[ 15, 18, 16, 15, 19, 17, 80 ]</p>
+                    <p>a) Calcula la <strong>media</strong> y la <strong>mediana</strong> de los salarios. (10 puntos)</p>
+                    <p>b) ¿Cuál de las dos medidas describe mejor el "salario típico" del equipo y por qué? (10 puntos)</p>
+                </div>
+
+                <!-- SECCIÓN II -->
+                <h3>Sección II: Interpretación de Gráficos (45 puntos)</h3>
+                <div class="question">
+                    <p><strong>2.</strong> El siguiente gráfico de líneas muestra la evolución de la tasa de desempleo en la región durante el año 2024. ¿En qué semestre se observó la mayor <strong>disminución</strong> en la tasa de desempleo? (10 puntos)</p>
+                    <div class="example">
+                        <svg width="100%" height="200" viewBox="0 0 400 200" style="font-family: sans-serif; font-size: 10px;">
+                            <polyline points="30,60 80,40 130,50 180,80 230,120 280,100 330,80 380,60" fill="none" stroke="#ff5d5d" stroke-width="2"/>
+                            <line x1="30" y1="180" x2="380" y2="180" stroke="#ccc"/>
+                            <text x="20" y="185">Ene</text> <text x="370" y="185">Dic</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="question">
+                    <p><strong>3.</strong> El gráfico de barras compara la ejecución del presupuesto de 4 proyectos. ¿Qué proyecto tuvo el <strong>menor</strong> porcentaje de ejecución? (10 puntos)</p>
+                    <div class="example">
+                        <svg width="100%" height="150" viewBox="0 0 300 150" style="font-family: sans-serif; font-size: 10px;">
+                            <rect x="20" y="50" width="50" height="100" fill="#5d5dff"></rect><text x="45" y="45">Proyecto A</text><text x="45" y="145">100%</text>
+                            <rect x="90" y="90" width="50" height="60" fill="#5d5dff"></rect><text x="115" y="85">Proyecto B</text><text x="115" y="145">60%</text>
+                            <rect x="160" y="70" width="50" height="80" fill="#5d5dff"></rect><text x="185" y="65">Proyecto C</text><text x="185" y="145">80%</text>
+                            <rect x="230" y="120" width="50" height="30" fill="#5d5dff"></rect><text x="255" y="115">Proyecto D</text><text x="255" y="145">30%</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="question">
+                    <p><strong>4.</strong> Se intentó visualizar el origen de los ingresos de un municipio con el siguiente gráfico de pastel. Explica brevemente por qué un <strong>gráfico de barras</strong> sería una mejor alternativa en este caso. (10 puntos)</p>
+                    <div class="example" style="text-align:center;">
+                        <svg width="300" height="250" viewBox="0 0 120 120" style="font-family: sans-serif; font-size: 5px;">
+                            <title>Gráfico de pastel complejo sobre ingresos municipales</title>
+                            <!-- 10 slices of similar size to make comparison difficult -->
+                            <circle cx="60" cy="60" r="40" fill="#ff5d5d" stroke="#fff" stroke-width="1" stroke-dasharray="25.12, 226.08" transform="rotate(-90 60 60)"></circle>
+                            <circle cx="60" cy="60" r="40" fill="#ff9d5d" stroke="#fff" stroke-width="1" stroke-dasharray="25.12, 226.08" transform="rotate(-54 60 60)"></circle>
+                            <circle cx="60" cy="60" r="40" fill="#ffc85d" stroke="#fff" stroke-width="1" stroke-dasharray="25.12, 226.08" transform="rotate(-18 60 60)"></circle>
+                            <circle cx="60" cy="60" r="40" fill="#5d5dff" stroke="#fff" stroke-width="1" stroke-dasharray="25.12, 226.08" transform="rotate(18 60 60)"></circle>
+                            <circle cx="60" cy="60" r="40" fill="#5dff5d" stroke="#fff" stroke-width="1" stroke-dasharray="25.12, 226.08" transform="rotate(54 60 60)"></circle>
+                            <circle cx="60" cy="60" r="40" fill="#ff5dff" stroke="#fff" stroke-width="1" stroke-dasharray="25.12, 226.08" transform="rotate(90 60 60)"></circle>
+                            <circle cx="60" cy="60" r="40" fill="#5dffff" stroke="#fff" stroke-width="1" stroke-dasharray="25.12, 226.08" transform="rotate(126 60 60)"></circle>
+                            <circle cx="60" cy="60" r="40" fill="#a0a0a0" stroke="#fff" stroke-width="1" stroke-dasharray="25.12, 226.08" transform="rotate(162 60 60)"></circle>
+                            <circle cx="60" cy="60" r="40" fill="#f0a0a0" stroke="#fff" stroke-width="1" stroke-dasharray="25.12, 226.08" transform="rotate(198 60 60)"></circle>
+                            <circle cx="60" cy="60" r="40" fill="#a0f0a0" stroke="#fff" stroke-width="1" stroke-dasharray="25.12, 226.08" transform="rotate(234 60 60)"></circle>
+                            <!-- Labels realistas y difíciles de leer -->
+                            <text x="80" y="22">Predial (11%)</text>
+                            <text x="98" y="50">Participaciones (12%)</text>
+                            <text x="90" y="80">ISAI (9%)</text>
+                            <text x="60" y="105">Derechos Agua (10%)</text>
+                            <text x="22" y="88">Licencias (8%)</text>
+                            <text x="5" y="55">Multas (7%)</text>
+                            <text x="20" y="25">Aportaciones (13%)</text>
+                            <text x="40" y="10">Productos (8%)</text>
+                            <text x="80" y="100">Aprovechamientos (12%)</text>
+                        </svg>
+                    </div>
+                </div>
+                 <div class="question">
+                    <p><strong>5.</strong> El siguiente gráfico de dispersión busca una relación entre el número de parques en diferentes colonias y la tasa de criminalidad. Basado en el gráfico, ¿qué puedes concluir sobre la relación entre estas dos variables? (15 puntos)</p>
+                    <div class="example">
+                        <svg width="100%" height="200" viewBox="0 0 400 200" style="font-family: sans-serif; font-size: 10px;">
+                            <circle cx="50" cy="150" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="80" cy="80" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="120" cy="120" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="150" cy="60" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="180" cy="170" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="210" cy="90" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="240" cy="140" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="270" cy="70" r="3" fill="#ff5d5d"></circle>
+                            <circle cx="300" cy="110" r="3" fill="#ff5d5d"></circle>
+                             <circle cx="330" cy="160" r="3" fill="#ff5d5d"></circle>
+                            <line x1="30" y1="180" x2="380" y2="180" stroke="#ccc"/><text x="200" y="195">Nº de Parques</text>
+                            <line x1="30" y1="20" x2="30" y2="180" stroke="#ccc"/><text x="10" y="100" transform="rotate(-90,10,100)">Tasa de Criminalidad</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN III -->
+                <h3>Sección III: Probabilidad Aplicada (35 puntos)</h3>
+                <div class="question">
+                    <p><strong>6.</strong> En una licitación pública compiten 8 empresas con igual probabilidad de ganar. ¿Cuál es la probabilidad de que la empresa "Constructora del Sur" gane el contrato? (10 puntos)</p>
+                </div>
+                <div class="question">
+                    <p><strong>7.</strong> El 95% de los trámites de una oficina se completan a tiempo. Si se selecciona un trámite al azar, ¿cuál es la probabilidad de que esté <strong>retrasado</strong>? (10 puntos)</p>
+                </div>
+                <div class="question">
+                    <p><strong>8.</strong> En el municipio, la probabilidad de que llueva un día de octubre es del 20%. Si llueve, la probabilidad de que haya congestión vehicular es del 70%. ¿Cuál es la probabilidad de que un día de octubre llueva <strong>Y</strong> haya congestión vehicular? (15 puntos)</p>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            // Contraseña: CLH2025
+            if (password === 'CLH2025') {
+                document.getElementById('password-container').style.display = 'none';
+                document.getElementById('exam-container').style.display = 'block';
+            } else {
+                errorMessage.textContent = 'Contraseña incorrecta. Inténtalo de nuevo.';
+            }
+        }
+    </script>
+
+</body>
+</html>

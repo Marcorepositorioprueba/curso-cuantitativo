@@ -289,6 +289,96 @@
 
         <div class="card">
             <details>
+                <summary><h2><i class="fas fa-chart-line"></i> Ejercicios Prácticos: Graficando Correlaciones</h2></summary>
+                <div class="card-content">
+                    <p>A continuación, se presentan 5 conjuntos de datos. Tu tarea es copiar cada tabla en una hoja de cálculo de Excel, seleccionar los datos y crear un <strong>gráfico de dispersión</strong>. Observa la forma de la nube de puntos para determinar visualmente el tipo de correlación (positiva, negativa o nula) y su aparente fortaleza.</p>
+
+                    <div class="example">
+                        <h4>Ejercicio 1: Horas de Estudio vs. Calificación</h4>
+                        <p>¿Esperarías una relación positiva o negativa? Grafica y comprueba.</p>
+                        <table class="table">
+                            <thead><tr><th>Horas de Estudio (X)</th><th>Calificación (Y)</th></tr></thead>
+                            <tbody>
+                                <tr><td>1</td><td>6.5</td></tr>
+                                <tr><td>2</td><td>7.0</td></tr>
+                                <tr><td>3</td><td>7.8</td></tr>
+                                <tr><td>4</td><td>8.2</td></tr>
+                                <tr><td>5</td><td>8.9</td></tr>
+                                <tr><td>6</td><td>9.5</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="example">
+                        <h4>Ejercicio 2: Antigüedad del Coche (Años) vs. Precio de Reventa (USD)</h4>
+                        <p>Analiza cómo el paso del tiempo afecta el valor de un coche.</p>
+                        <table class="table">
+                            <thead><tr><th>Antigüedad (X)</th><th>Precio (Y)</th></tr></thead>
+                            <tbody>
+                                <tr><td>1</td><td>18000</td></tr>
+                                <tr><td>2</td><td>15500</td></tr>
+                                <tr><td>3</td><td>13000</td></tr>
+                                <tr><td>5</td><td>9000</td></tr>
+                                <tr><td>7</td><td>6000</td></tr>
+                                <tr><td>10</td><td>3500</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="example">
+                        <h4>Ejercicio 3: Número de Calzado vs. Puntuación en Test de IQ</h4>
+                        <p>¿Existe alguna conexión entre estas dos variables? La gráfica te dará la respuesta.</p>
+                        <table class="table">
+                            <thead><tr><th>Número de Calzado (X)</th><th>Puntuación IQ (Y)</th></tr></thead>
+                            <tbody>
+                                <tr><td>37</td><td>110</td></tr>
+                                <tr><td>38</td><td>95</td></tr>
+                                <tr><td>39</td><td>125</td></tr>
+                                <tr><td>40</td><td>100</td></tr>
+                                <tr><td>42</td><td>115</td></tr>
+                                <tr><td>44</td><td>105</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="example">
+                        <h4>Ejercicio 4: Temperatura Diaria (°C) vs. Venta de Helados</h4>
+                        <p>Observa la relación entre el clima y las ventas de un producto estacional.</p>
+                        <table class="table">
+                            <thead><tr><th>Temperatura (X)</th><th>Helados Vendidos (Y)</th></tr></thead>
+                            <tbody>
+                                <tr><td>20</td><td>150</td></tr>
+                                <tr><td>22</td><td>180</td></tr>
+                                <tr><td>25</td><td>250</td></tr>
+                                <tr><td>28</td><td>320</td></tr>
+                                <tr><td>30</td><td>400</td></tr>
+                                <tr><td>32</td><td>450</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="example">
+                        <h4>Ejercicio 5: Dosis de Fertilizante (gramos) vs. Altura de la Planta (cm)</h4>
+                        <p>¿Más es siempre mejor? Analiza la gráfica para ver el efecto del fertilizante.</p>
+                        <table class="table">
+                            <thead><tr><th>Fertilizante (X)</th><th>Altura (Y)</th></tr></thead>
+                            <tbody>
+                                <tr><td>5</td><td>15</td></tr>
+                                <tr><td>10</td><td>25</td></tr>
+                                <tr><td>15</td><td>30</td></tr>
+                                <tr><td>20</td><td>32</td></tr>
+                                <tr><td>25</td><td>33</td></tr>
+                                <tr><td>30</td><td>31</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="hint"><strong>Pista:</strong> A veces las relaciones no son perfectamente lineales. Observa si la tendencia cambia en algún punto.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
                 <summary><h2><i class="fas fa-calculator"></i> Profundizando: Varianza, Covarianza y Correlación</h2></summary>
                 <div class="card-content">
                     <p>Para entender matemáticamente cómo se relacionan dos variables, necesitamos tres conceptos clave. Usaremos una pequeña muestra de nuestros datos de la encuesta para ilustrarlo.</p>
@@ -348,6 +438,74 @@
             </details>
         </div>
 
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-landmark"></i> Aplicaciones de la Correlación en la Administración Pública</h2></summary>
+                <div class="card-content">
+                    <p>El análisis de correlación es una herramienta fundamental para la toma de decisiones basada en evidencia en el sector público. Permite a los gestores y analistas identificar relaciones entre variables para optimizar políticas, asignar recursos y prever resultados. Aquí algunos ejemplos:</p>
+                    <ul>
+                        <li>
+                            <strong>Seguridad Pública:</strong> Analizar la correlación entre el <strong>gasto en equipamiento policial</strong> (patrullas, cámaras) y la <strong>tasa de delitos</strong> en diferentes distritos. Una correlación negativa fuerte podría justificar un aumento de la inversión.
+                        </li>
+                        <li>
+                            <strong>Educación:</strong> Estudiar la correlación entre la <strong>inversión en capacitación docente</strong> y los <strong>resultados de los estudiantes</strong> en pruebas estandarizadas. Una correlación positiva apoyaría la expansión de programas de formación para maestros.
+                        </li>
+                        <li>
+                            <strong>Desarrollo Económico:</strong> Medir la correlación entre el <strong>número de días para abrir una empresa</strong> (una medida de burocracia) y la <strong>inversión privada</strong> en un municipio. Una correlación negativa fuerte sería un argumento para implementar una ventanilla única o simplificar trámites.
+                        </li>
+                        <li>
+                            <strong>Salud Pública:</strong> Investigar la correlación entre las <strong>campañas de concientización sobre la diabetes</strong> y la <strong>tasa de nuevos diagnósticos</strong>. Una correlación negativa podría indicar el éxito de la campaña en promover la prevención.
+                        </li>
+                        <li>
+                            <strong>Medio Ambiente:</strong> Analizar la correlación entre los <strong>niveles de contaminación del aire (PM2.5)</strong> y el <strong>número de ingresos hospitalarios por enfermedades respiratorias</strong>. Una correlación positiva fuerte puede impulsar regulaciones ambientales más estrictas.
+                        </li>
+                    </ul>
+                    <div class="example">
+                        <strong>Caso de Estudio:</strong> Un ayuntamiento quiere reducir el ausentismo escolar. Antes de lanzar un programa costoso, realiza un análisis de correlación y encuentra una fuerte relación negativa (r = -0.75) entre la <strong>distancia del hogar a la escuela</strong> y la <strong>asistencia promedio</strong>. Con esta evidencia, en lugar de una campaña general, decide implementar un programa piloto de transporte escolar en las zonas más alejadas, optimizando el uso de recursos públicos.
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details open>
+                <summary><h2><i class="fas fa-superscript"></i> Tarea: Cálculo e Interpretación de la Correlación</h2></summary>
+                <div class="card-content">
+                    <p>Ahora que has visualizado los datos, es tu turno de cuantificar la relación. Para cada uno de los 5 ejercicios de la sección anterior, calcula el coeficiente de correlación de Pearson (r) en Excel y escribe una breve interpretación del resultado.</p>
+
+                    <div class="example">
+                        <h4>Ejercicio 1: Horas de Estudio vs. Calificación</h4>
+                        <p><strong>Instrucción de Cálculo:</strong> En una celda vacía de Excel, utiliza la fórmula <code>=COEF.DE.CORREL(rango_X, rango_Y)</code>, reemplazando <code>rango_X</code> con las celdas de "Horas de Estudio" y <code>rango_Y</code> con las de "Calificación".</p>
+                        <p><strong>Pregunta para la Interpretación:</strong> El valor que obtuviste, ¿está más cerca de 1, -1 o 0? ¿Qué te dice eso sobre la fuerza y la dirección de la relación entre estudiar y las calificaciones?</p>
+                    </div>
+
+                    <div class="example">
+                        <h4>Ejercicio 2: Antigüedad del Coche (Años) vs. Precio de Reventa (USD)</h4>
+                        <p><strong>Instrucción de Cálculo:</strong> Aplica la misma fórmula <code>=COEF.DE.CORREL(rango_X, rango_Y)</code> a los datos de antigüedad y precio.</p>
+                        <p><strong>Pregunta para la Interpretación:</strong> ¿El signo del coeficiente es positivo o negativo? ¿Confirma esto lo que esperabas sobre el valor de un coche a lo largo del tiempo?</p>
+                    </div>
+
+                    <div class="example">
+                        <h4>Ejercicio 3: Número de Calzado vs. Puntuación en Test de IQ</h4>
+                        <p><strong>Instrucción de Cálculo:</strong> Calcula el coeficiente de correlación para estas dos variables.</p>
+                        <p><strong>Pregunta para la Interpretación:</strong> Al ser un valor tan cercano a cero, ¿qué puedes concluir sobre la relación lineal entre el número de calzado y el IQ?</p>
+                    </div>
+
+                    <div class="example">
+                        <h4>Ejercicio 4: Temperatura Diaria (°C) vs. Venta de Helados</h4>
+                        <p><strong>Instrucción de Cálculo:</strong> Calcula el coeficiente de correlación para los datos de temperatura y ventas.</p>
+                        <p><strong>Pregunta para la Interpretación:</strong> Compara la magnitud (el valor absoluto) de este coeficiente con el del Ejercicio 1. ¿Cuál de las dos relaciones te parece más fuerte o más "perfecta" y por qué?</p>
+                    </div>
+
+                    <div class="example">
+                        <h4>Ejercicio 5: Dosis de Fertilizante (gramos) vs. Altura de la Planta (cm)</h4>
+                        <p><strong>Instrucción de Cálculo:</strong> Calcula el coeficiente de correlación para los datos de fertilizante y altura.</p>
+                        <p><strong>Pregunta para la Interpretación:</strong> El resultado muestra una correlación positiva fuerte, pero no perfecta. Viendo la gráfica que hiciste, ¿por qué crees que el coeficiente no es 0.99 o más? ¿Qué limitación del coeficiente de correlación de Pearson ilustra este caso?</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
         <div class="card" id="practica">
             <details>
                 <summary><h2><i class="fas fa-laptop-code"></i> 5. Práctica General</h2></summary>
@@ -361,6 +519,108 @@
                     </ol>
                     <div class="example" style="text-align: center;">
                         <a href="recursos/encuesta_socioeconomica.csv" class="cta-button" download="encuesta_socioeconomica.csv"><i class="fas fa-file-csv"></i> Descargar Archivo de Práctica (.csv)</a>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card">
+            <details>
+                <summary><h2><i class="fas fa-check-circle"></i> Solución a la Práctica General (Ejemplo y Pasos en Excel)</h2></summary>
+                <div class="card-content">
+                    <p>A continuación se muestra un ejemplo de cómo se verían los resultados y los pasos para lograrlos en Excel. Tus gráficos y tablas pueden variar ligeramente, pero la interpretación general debería ser similar.</p>
+
+                    <h3>1. Gráfico de Dispersión: Edad vs. Ingreso Mensual</h3>
+                    <div class="example">
+                        <h4>Pasos en Excel:</h4>
+                        <ol>
+                            <li>Selecciona las dos columnas de datos que quieres analizar (en este caso, `edad` e `ingreso_mensual`).</li>
+                            <li>Ve a la pestaña <strong>Insertar</strong> en el menú superior.</li>
+                            <li>En el grupo de "Gráficos", haz clic en el icono de <strong>"Insertar gráfico de dispersión (X, Y)"</strong>.</li>
+                            <li>Elige el primer tipo de gráfico, el que solo muestra los puntos.</li>
+                            <li>¡Listo! Para mejorar el gráfico, puedes usar el botón "+" que aparece a la derecha para agregar títulos de eje y un título principal.</li>
+                        </ol>
+                        <hr style="margin: 1.5rem 0;">
+                        <h4>Resultado Visual de Ejemplo:</h4>
+                        <svg width="100%" height="200" viewBox="0 0 300 200" style="font-family: sans-serif; font-size: 10px;">
+                            <text x="0" y="15" fill="#555">Edad vs. Ingreso Mensual</text>
+                            <line x1="30" y1="20" x2="30" y2="180" stroke="#ccc" /><line x1="30" y1="180" x2="280" y2="180" stroke="#ccc" />
+                            <text x="0" y="25" fill="#555">Alto</text><text x="0" y="180" fill="#555">Bajo</text>
+                            <text x="30" y="195" fill="#555">Joven</text><text x="260" y="195" fill="#555">Mayor</text>
+                            <!-- Puntos de datos simulados -->
+                            <circle cx="50" cy="160" r="2" fill="#ff5d5d" opacity="0.7"></circle><circle cx="65" cy="140" r="2" fill="#ff5d5d" opacity="0.7"></circle>
+                            <circle cx="80" cy="150" r="2" fill="#ff5d5d" opacity="0.7"></circle><circle cx="100" cy="120" r="2" fill="#ff5d5d" opacity="0.7"></circle>
+                            <circle cx="120" cy="130" r="2" fill="#ff5d5d" opacity="0.7"></circle><circle cx="140" cy="100" r="2" fill="#ff5d5d" opacity="0.7"></circle>
+                            <circle cx="160" cy="110" r="2" fill="#ff5d5d" opacity="0.7"></circle><circle cx="180" cy="80" r="2" fill="#ff5d5d" opacity="0.7"></circle>
+                            <circle cx="200" cy="90" r="2" fill="#ff5d5d" opacity="0.7"></circle><circle cx="220" cy="60" r="2" fill="#ff5d5d" opacity="0.7"></circle>
+                            <circle cx="240" cy="70" r="2" fill="#ff5d5d" opacity="0.7
+                            "></circle><circle cx="260" cy="40" r="2" fill="#ff5d5d" opacity="0.7"></circle>
+                        </svg>
+                        <p style="margin-top: 1rem;"><strong>Conclusión:</strong> La nube de puntos muestra una tendencia ascendente, confirmando una <strong>correlación positiva</strong>. La dispersión de los puntos indica que la correlación es moderada, no perfecta.</p>
+                    </div>
+
+                    <h3>2. Tabla de Contingencia: Nivel Educativo vs. Satisfacción con la Vida</h3>
+                    <div class="example">
+                        <h4>Pasos en Excel (Método Manual con Fórmulas):</h4>
+                        <ol>
+                            <li>
+                                <strong>1. Crear la Estructura:</strong> En una zona vacía de la hoja, escribe los valores únicos de `nivel_educativo` como encabezados de fila (ej. Bachillerato, Licenciatura, Posgrado) y los de `satisfaccion_con_la_vida` como encabezados de columna (ej. Baja, Media, Alta). Esto creará el esqueleto de tu tabla.
+                            </li>
+                            <li>
+                                <strong>2. Contar Coincidencias:</strong> Usaremos la función <code>CONTAR.SI.CONJUNTO</code>. En la primera celda de tu nueva tabla (la que cruza "Bachillerato" y "Baja"), escribe la fórmula:<br>
+                                <code>=CONTAR.SI.CONJUNTO(rango_educativo, "Bachillerato", rango_satisfaccion, "Baja")</code><br>
+                                <small><em>(Reemplaza <code>rango_educativo</code> y <code>rango_satisfaccion</code> por los rangos de columna completos de tus datos, por ejemplo, <code>C:C</code> y <code>E:E</code>).</em></small>
+                            </li>
+                            <li>
+                                <strong>3. Repetir para todas las celdas:</strong> Copia y pega la fórmula en las demás celdas de tu tabla, ajustando los criterios de texto (ej. "Licenciatura", "Media", "Alta") para que coincidan con la fila y columna correspondiente.
+                            </li>
+                            <li>
+                                <strong>4. (Opcional) Calcular Porcentajes:</strong> Para los porcentajes por fila, crea otra tabla vacía. En cada celda, divide la cuenta que acabas de calcular entre la suma total de su fila. Por ejemplo, si tu primera cuenta está en G2 y el total de esa fila en J2, la fórmula sería <code>=G2/$J$2</code>. Luego, puedes arrastrar esta fórmula y formatear las celdas como "Porcentaje".
+                            </li>
+                        </ol>
+                        <p><strong>Nota:</strong> Este método es más laborioso que las tablas dinámicas, pero es excelente para entender exactamente cómo se construye la tabla de contingencia.</p>
+                    </div>
+
+                    <h3>3. Gráfico de Cajas: Ingreso Mensual por Nivel Educativo</h3>
+                    <div class="example">
+                        <h4>Pasos en Excel:</h4>
+                        <ol>
+                            <li>Selecciona las dos columnas de datos relevantes: `nivel_educativo` e `ingreso_mensual`.</li>
+                            <li>Ve a la pestaña <strong>Insertar</strong>.</li>
+                            <li>En el grupo "Gráficos", haz clic en el icono de <strong>"Insertar gráfico de estadística"</strong>.</li>
+                            <li>Elige el gráfico de <strong>"Cajas y Bigotes"</strong>.</li>
+                            <li><strong>Nota:</strong> Este tipo de gráfico está disponible de forma nativa en Excel 2016 y versiones posteriores.</li>
+                        </ol>
+                        <hr style="margin: 1.5rem 0;">
+                        <h4>Resultado Visual de Ejemplo:</h4>
+                        <div style="border: 1px solid #ddd; padding: 10px; border-radius: 5px; margin-top: 1rem;">
+                            <svg width="100%" height="200" viewBox="0 0 300 200" style="font-family: sans-serif; font-size: 10px;">
+                                <text x="0" y="15" fill="#555">Ingreso Mensual por Nivel Educativo</text>
+                                <line x1="40" y1="20" x2="40" y2="180" stroke="#ccc" />
+                                <text x="5" y="25" fill="#555">Alto</text><text x="5" y="180" fill="#555">Bajo</text>
+                                <line x1="40" y1="180" x2="290" y2="180" stroke="#ccc" />
+                                <text x="50" y="195" fill="#555">Bachillerato</text><text x="130" y="195" fill="#555">Licenciatura</text><text x="220" y="195" fill="#555">Posgrado</text>
+                                
+                                <!-- Box Plot 1: Bachillerato -->
+                                <rect x="60" y="120" width="40" height="40" fill="#ff9d5d" stroke="#555" />
+                                <line x1="60" y1="135" x2="100" y2="135" stroke="#555" /> <!-- Mediana -->
+                                <line x1="80" y1="120" x2="80" y2="100" stroke="#555" /> <!-- Bigote sup -->
+                                <line x1="80" y1="160" x2="80" y2="170" stroke="#555" /> <!-- Bigote inf -->
+
+                                <!-- Box Plot 2: Licenciatura -->
+                                <rect x="140" y="80" width="40" height="60" fill="#ffc85d" stroke="#555" />
+                                <line x1="140" y1="100" x2="180" y2="100" stroke="#555" /> <!-- Mediana -->
+                                <line x1="160" y1="80" x2="160" y2="60" stroke="#555" />
+                                <line x1="160" y1="140" x2="160" y2="160" stroke="#555" />
+
+                                <!-- Box Plot 3: Posgrado -->
+                                <rect x="220" y="40" width="40" height="80" fill="#5d5dff" stroke="#555" />
+                                <line x1="220" y1="70" x2="260" y2="70" stroke="#555" /> <!-- Mediana -->
+                                <line x1="240" y1="40" x2="240" y2="25" stroke="#555" />
+                                <line x1="240" y1="120" x2="240" y2="150" stroke="#555" />
+                            </svg>
+                        </div>
+                        <p style="margin-top: 1rem;"><strong>Conclusión:</strong> El gráfico de cajas ilustra de forma clara que tanto la mediana del ingreso (la línea central) como el rango general de salarios aumentan con un mayor nivel educativo.</p>
                     </div>
                 </div>
             </details>
