@@ -372,9 +372,275 @@
 
     </main>
 
+    <div class="card" id="calculadora-dist">
+        <details open>
+            <summary><h2><i class="fas fa-calculator"></i> Calculadora Interactiva de Distribución</h2></summary>
+            <div class="card-content">
+                <p>Usa esta herramienta para entender tus propios datos. Pega una lista de números (separados por comas) y la calculadora generará un histograma, calculará estadísticas clave y sugerirá qué tipo de distribución podrían seguir tus datos.</p>
+                
+                <div class="calc-container">
+                    <div class="calc-input-section">
+                        <h3>1. Ingresa tus datos</h3>
+                        <textarea id="dataInput" rows="8" placeholder="Ej: 25, 28, 30, 32, 33, 35, 37, 38, 40, 45, 12, 15, 15, 16, 18, 18, 18, 20, 22"></textarea>
+                        <button id="analyzeBtn" class="cta-button">Analizar y Graficar Datos</button>
+                    </div>
+                    
+                    <div class="calc-results-section">
+                        <h3>2. Análisis de Distribución</h3>
+                        <div id="resultsOutput">
+                            <p><i>Los resultados del análisis aparecerán aquí.</i></p>
+                        </div>
+                        <canvas id="histogramChart" width="400" height="250"></canvas>
+                    </div>
+                </div>
+
+                <div class="prob-section">
+                    <h3>3. Calcula una Probabilidad (Empírica)</h3>
+                    <p>Basado en los datos que ingresaste, ¿cuál es la probabilidad de que un valor sea...?</p>
+                    <div class="prob-controls">
+                        <select id="probOperator">
+                            <option value=">">Mayor que (>)</option>
+                            <option value="<">Menor que (<)</option>
+                            <option value="=">Igual a (=)</option>
+                            <option value=">=">Mayor o igual que (>=)</option>
+                            <option value="<=">Menor o igual que (<=)</option>
+                        </select>
+                        <input type="number" id="probValue" placeholder="Ej: 35">
+                        <button id="calculateProbBtn" class="cta-button secondary-button">Calcular Probabilidad</button>
+                    </div>
+                    <div id="probResult">
+                        <p><i>El cálculo de probabilidad aparecerá aquí.</i></p>
+                    </div>
+                </div>
+            </div>
+        </details>
+    </div>
+
     <footer>
         <p>Dr. Marco Antonio Leon Zaragoza|Otoño 2025</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const calculateProbBtn = document.getElementById('calculateProbBtn');
+            const dataInput = document.getElementById('dataInput');
+            const resultsOutput = document.getElementById('resultsOutput');
+            const probResult = document.getElementById('probResult');
+            const ctx = document.getElementById('histogramChart').getContext('2d');
+            let chart;
+            let numericData = [];
+
+            // --- Estilos Adicionales para la Calculadora ---
+            const style = document.createElement('style');
+            style.textContent = `
+                .calc-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 2rem;
+                    margin-top: 1.5rem;
+                }
+                .calc-input-section, .calc-results-section {
+                    flex: 1;
+                    min-width: 300px;
+                }
+                #dataInput {
+                    width: 100%;
+                    padding: 0.5rem;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    font-family: monospace;
+                    margin-bottom: 1rem;
+                }
+                #analyzeBtn {
+                    width: 100%;
+                }
+                .prob-section {
+                    margin-top: 3rem;
+                    padding-top: 2rem;
+                    border-top: 1px solid #eee;
+                }
+                .prob-controls {
+                    display: flex;
+                    gap: 1rem;
+                    align-items: center;
+                    flex-wrap: wrap;
+                }
+                .prob-controls select, .prob-controls input {
+                    padding: 0.7rem;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+                #probResult {
+                    margin-top: 1rem;
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                    background-color: #f9f9f9;
+                    padding: 1rem;
+                    border-left: 5px solid #555;
+                }
+            `;
+            document.head.appendChild(style);
+
+            analyzeBtn.addEventListener('click', function() {
+                const rawData = dataInput.value;
+                if (!rawData.trim()) {
+                    resultsOutput.innerHTML = '<p style="color: red;">Por favor, ingresa algunos datos.</p>';
+                    return;
+                }
+
+                                                numericData = rawData.split(',')
+                                     .map(item => parseFloat(item.trim()))
+                                     .filter(item => !isNaN(item));
+
+                if (numericData.length === 0) {
+                    resultsOutput.innerHTML = '<p style="color: red;">No se encontraron datos numéricos válidos.</p>';
+                    return;
+                }
+
+                // Calcular estadísticas
+                const n = numericData.length;
+                const sum = numericData.reduce((a, b) => a + b, 0);
+                const mean = sum / n;
+                const variance = numericData.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / n;
+                const stdDev = Math.sqrt(variance);
+                const min = Math.min(...numericData);
+                const max = Math.max(...numericData);
+                
+                // Lógica simple para detectar distribución
+                let distType = 'Desconocida';
+                const areAllIntegers = numericData.every(x => x === Math.floor(x));
+                const meanVarRatio = Math.abs(mean - variance) / mean;
+
+                if (areAllIntegers && mean > 0 && meanVarRatio < 0.35) { // Si son enteros y la media es cercana a la varianza
+                    distType = 'Posiblemente Poisson';
+                } else if (stdDev > 0) {
+                    const sortedData = [...numericData].sort((a, b) => a - b);
+                    const median = n % 2 === 0 ? (sortedData[n/2 - 1] + sortedData[n/2]) / 2 : sortedData[Math.floor(n/2)];
+                    const meanMedianRatio = Math.abs(mean - median) / mean;
+                    if (meanMedianRatio < 0.1) { // Si la media es muy cercana a la mediana
+                        distType = 'Posiblemente Normal (Simétrica)';
+                    } else {
+                        distType = 'Asimétrica';
+                    }
+                } else {
+                    distType = 'Uniforme (un solo valor)';
+                }
+
+
+                // Mostrar resultados
+                resultsOutput.innerHTML = `
+                    <p><strong>Resultados del Análisis:</strong></p>
+                    <ul>
+                        <li><strong>Cantidad de datos:</strong> ${n}</li>
+                        <li><strong>Media (Promedio):</strong> ${mean.toFixed(3)}</li>
+                        <li><strong>Varianza:</strong> ${variance.toFixed(3)}</li>
+                        <li><strong>Desviación Estándar:</strong> ${stdDev.toFixed(3)}</li>
+                        <li><strong>Mínimo:</strong> ${min} | <strong>Máximo:</strong> ${max}</li>
+                    </ul>
+                    <p><strong>Sugerencia de Distribución:</strong> <span style="font-weight:bold; color: #ff5d5d;">${distType}</span></p>
+                `;
+
+                // Crear histograma
+                createHistogram(numericData, min, max);
+            });
+
+            calculateProbBtn.addEventListener('click', function() {
+                const operator = document.getElementById('probOperator').value;
+                const value = parseFloat(document.getElementById('probValue').value);
+
+                if (numericData.length === 0) {
+                    probResult.innerHTML = '<p style="color: red;">Primero debes analizar un conjunto de datos.</p>';
+                    return;
+                }
+                if (isNaN(value)) {
+                    probResult.innerHTML = '<p style="color: red;">Por favor, ingresa un valor numérico para la comparación.</p>';
+                    return;
+                }
+
+                let successCount = 0;
+                switch (operator) {
+                    case '>':  successCount = numericData.filter(x => x > value).length; break;
+                    case '<':  successCount = numericData.filter(x => x < value).length; break;
+                    case '=':  successCount = numericData.filter(x => x === value).length; break;
+                    case '>=': successCount = numericData.filter(x => x >= value).length; break;
+                    case '<=': successCount = numericData.filter(x => x <= value).length; break;
+                }
+
+                const probability = (successCount / numericData.length) * 100;
+                probResult.innerHTML = `
+                    <p>P(valor ${operator} ${value}) = <strong>${probability.toFixed(2)}%</strong></p>
+                    <p><small>(${successCount} de ${numericData.length} valores cumplen esta condición)</small></p>
+                `;
+            });
+
+            function createHistogram(data, min, max) {
+                if (chart) {
+                    chart.destroy();
+                }
+
+                // Regla de Sturges para el número de bins, o una más simple
+                const numBins = Math.ceil(Math.log2(data.length)) + 1;
+                const binWidth = (max - min) / numBins;
+                
+                const bins = new Array(numBins).fill(0);
+                const labels = new Array(numBins);
+
+                for (let i = 0; i < numBins; i++) {
+                    const binStart = min + i * binWidth;
+                    const binEnd = binStart + binWidth;
+                    labels[i] = `${binStart.toFixed(1)}-${binEnd.toFixed(1)}`;
+                }
+
+                data.forEach(value => {
+                    if (value === max) { // El valor máximo va en el último bin
+                        bins[numBins - 1]++;
+                    } else {
+                        const binIndex = Math.floor((value - min) / binWidth);
+                        bins[binIndex]++;
+                    }
+                });
+
+                chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Frecuencia de Datos',
+                            data: bins,
+                            backgroundColor: 'rgba(255, 93, 93, 0.6)',
+                            borderColor: 'rgba(255, 93, 93, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: { display: true, text: 'Frecuencia (Conteo)' }
+                            },
+                            x: {
+                                title: { display: true, text: 'Rangos de Valores' }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    title: function(context) {
+                                        return 'Rango: ' + context[0].label;
+                                    },
+                                    label: function(context) {
+                                        return 'Cantidad: ' + context.raw;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
