@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Regresión</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+        h1, h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+        .hidden-content {
+            display: none;
+        }
+        .case-study {
+            margin-top: 20px;
+            padding: 15px;
+            border-left: 4px solid #0056b3;
+            background-color: #f9f9f9;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #004494;
+        }
+        /* Estilos para tablas y output */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .data-table th {
+            background-color: #e9ecef;
+            color: #333;
+        }
+        .stats-output {
+            background-color: #2d2d2d;
+            color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-content" class="hidden-content container">
+        <h1>Evaluación: Casos de Regresión</h1>
+        
+        <div class="case-study">
+            <h2>Caso 1: Regresión Lineal Simple</h2>
+            <p><strong>Contexto:</strong> Una empresa de bienes raíces quiere entender la relación entre el tamaño de una casa (en metros cuadrados) y su precio de venta (en miles de USD). Han recopilado datos de 10 ventas recientes.</p>
+            <p><strong>Tarea:</strong></p>
+            <ol>
+                <li>Calcula el modelo de regresión lineal simple (Y = b0 + b1*X).</li>
+                <li>Interpreta el significado de la pendiente (b1) en el contexto del problema.</li>
+                <li>Estima el precio de una casa de 150 metros cuadrados.</li>
+            </ol>
+            
+            <h4>Datos de Ventas Recientes</h4>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Casa</th>
+                        <th>Tamaño (m²) (X)</th>
+                        <th>Precio (miles USD) (Y)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>80</td><td>150</td></tr>
+                    <tr><td>2</td><td>100</td><td>180</td></tr>
+                    <tr><td>3</td><td>120</td><td>210</td></tr>
+                    <tr><td>4</td><td>90</td><td>165</td></tr>
+                    <tr><td>5</td><td>110</td><td>195</td></tr>
+                    <tr><td>6</td><td>130</td><td>230</td></tr>
+                    <tr><td>7</td><td>85</td><td>155</td></tr>
+                    <tr><td>8</td><td>105</td><td>190</td></tr>
+                    <tr><td>9</td><td>125</td><td>220</td></tr>
+                    <tr><td>10</td><td>95</td><td>175</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="case-study">
+            <h2>Caso 2: Regresión Lineal Múltiple</h2>
+            <p><strong>Contexto:</strong> La misma empresa ahora quiere un modelo más robusto. Además del tamaño (metros cuadrados), han añadido el número de habitaciones y la antigüedad de la casa (en años) como variables predictoras del precio.</p>
+            <p><strong>Tarea:</strong></p>
+            <ol>
+                <li>Plantea el modelo de regresión lineal múltiple.</li>
+                <li>Utilizando los datos brutos proporcionados, realiza el análisis de regresión múltiple en un software como Excel.</li>
+                <li>Estima el precio de una casa de 200 m², 3 habitaciones y 5 años de antigüedad usando el modelo.</li>
+            </ol>
+
+            <h4>Datos Brutos para Análisis</h4>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Precio (miles USD) (Y)</th>
+                        <th>Tamaño (m²) (X1)</th>
+                        <th>Habitaciones (X2)</th>
+                        <th>Antigüedad (años) (X3)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>250</td><td>200</td><td>4</td><td>2</td></tr>
+                    <tr><td>180</td><td>150</td><td>3</td><td>5</td></tr>
+                    <tr><td>300</td><td>220</td><td>4</td><td>1</td></tr>
+                    <tr><td>160</td><td>140</td><td>2</td><td>8</td></tr>
+                    <tr><td>220</td><td>180</td><td>3</td><td>3</td></tr>
+                    <tr><td>350</td><td>250</td><td>5</td><td>2</td></tr>
+                    <tr><td>190</td><td>160</td><td>3</td><td>7</td></tr>
+                    <tr><td>280</td><td>210</td><td>4</td><td>4</td></tr>
+                    <tr><td>150</td><td>130</td><td>2</td><td>10</td></tr>
+                    <tr><td>240</td><td>190</td><td>3</td><td>4</td></tr>
+                </tbody>
+            </table>
+
+            
+        </div>
+
+        <div class="button-container">
+            <a href="index.html" class="button">Volver al Inicio</a>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = prompt("Por favor, introduce la contraseña para acceder a la evaluación:", "");
+            const correctPassword = "final25";
+            const content = document.getElementById("main-content");
+
+            if (password === correctPassword) {
+                content.style.display = "block";
+            } else {
+                alert("Contraseña incorrecta. No puedes acceder a esta sección.");
+                // Opcional: redirigir al usuario si la contraseña es incorrecta
+                // window.location.href = "index.html";
+            }
+        }
+        // Llama a la función al cargar la página
+        window.onload = checkPassword;
+    </script>
+
+</body>
+</html>
